@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  project:
+    build: .
+    command: go build
+    env_file: .env
+    environment:
+      CGO_ENABLED: 0
+    volumes:
+      - .:/go/src/github.com/peterzernia/project
+  client:
+    build: ./client
+    command: yarn build
+    env_file: .env
+    volumes:
+      - ./client:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+volumes:
+  node_modules:

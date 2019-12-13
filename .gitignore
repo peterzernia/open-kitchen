@@ -1,0 +1,12 @@
+# Go
+project
+gin-bin
+
+# Javascript/Typescript
+/client/node_modules
+/client/build
+/client/coverage
+
+# misc
+.env
+.vscode

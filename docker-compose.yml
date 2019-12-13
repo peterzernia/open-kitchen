@@ -1,0 +1,36 @@
+version: "3.3"
+
+services:
+  project:
+    build: .
+    command: gin -i -a $PORT run main.go
+    env_file: .env
+    environment:
+      CGO_ENABLED: 0
+    volumes:
+      - .:/go/src/github.com/peterzernia/project
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
+    links:
+      - db
+  client:
+    build: ./client
+    command: yarn start
+    env_file: .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+  db:
+    hostname: db
+    image: postgres:11
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+volumes:
+  node_modules:
+  postgres_data:

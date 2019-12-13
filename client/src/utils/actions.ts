@@ -1,0 +1,5 @@
+export const SET_USER = 'SET_USER'
+export const CLEAR_USER = 'CLEAR_USER'
+export const SET_NOTIFICATION = 'SET_NOTIFICATION'
+export const CLEAR_NOTIFICATION = 'CLEAR_NOTIFICATION'
+export const RESET = 'RESET'
