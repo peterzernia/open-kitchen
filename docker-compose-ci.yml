@@ -1,14 +1,14 @@
 version: "3.3"
 
 services:
-  project:
+  open-kitchen:
     build: .
     command: go build
     env_file: .env
     environment:
       CGO_ENABLED: 0
     volumes:
-      - .:/go/src/github.com/peterzernia/project
+      - .:/go/src/github.com/open-kitchen
   client:
     build: ./client
     command: yarn build

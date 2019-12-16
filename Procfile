@@ -1,1 +1,1 @@
-web: project
+web: open-kitchen

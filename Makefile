@@ -12,12 +12,12 @@ up:
 .PHONY: up
 
 lint:
-	$(dc) run --rm project go vet
+	$(dc) run --rm open-kitchen go vet
 	$(dc) run --rm client yarn lint
 .PHONY: lint
 
 test-go:
-	$(dc) run --rm project go test
+	$(dc) run --rm open-kitchen go test
 .PHONY: test-go
 
 test-js:
@@ -31,12 +31,12 @@ client:
 	$(dc) run --rm client yarn build
 .PHONY: client
 
-project:
-	$(dc) run --rm project go build
-.PHONY: project
+open-kitchen:
+	$(dc) run --rm open-kitchen go build
+.PHONY: open-kitchen
 
 sql:
-	docker exec -it project_db_1 psql -U postgres
+	docker exec -it open-kitchen_db_1 psql -U postgres
 .PHONY: sql
 
 clean:

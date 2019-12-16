@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/peterzernia/project/models"
-	"github.com/peterzernia/project/utils"
+	"github.com/peterzernia/open-kitchen/models"
+	"github.com/peterzernia/open-kitchen/utils"
 )
 
 func handleRegistration(c *gin.Context) {
