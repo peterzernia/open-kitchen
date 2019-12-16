@@ -1,6 +1,7 @@
 package recipe
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -91,4 +92,25 @@ func handleUpdate(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, recipe)
+}
+
+func searchRecipes(c *gin.Context) {
+	q, ok := c.GetQuery("q")
+	db := utils.GetDB()
+
+	fmt.Println(q)
+
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Please provide a valide query parameter",
+		})
+	}
+
+	recipes, err := getRecipesByQuery(db, q)
+
+	if err != nil {
+		c.Status(http.StatusInternalServerError)
+	}
+
+	c.JSON(http.StatusOK, recipes)
 }

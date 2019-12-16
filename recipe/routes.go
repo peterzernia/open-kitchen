@@ -9,4 +9,5 @@ func InitializeRoutes(r *gin.RouterGroup) {
 	r.POST("", handleCreate)
 	r.GET("/:slug", handleGet)
 	r.PUT("/:slug", handleUpdate)
+	r.GET("", searchRecipes)
 }
