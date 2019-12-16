@@ -9,12 +9,15 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/peterzernia/open-kitchen/auth"
 	"github.com/peterzernia/open-kitchen/models"
+	"github.com/peterzernia/open-kitchen/recipe"
 	"github.com/peterzernia/open-kitchen/utils"
 )
 
 func main() {
 	db := utils.InitDB()
-	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(
+		&models.User{}, &models.Recipe{},
+	)
 	defer db.Close()
 
 	router := gin.Default()
@@ -27,6 +30,7 @@ func main() {
 
 	api := router.Group("/api/v1")
 	auth.InitializeRoutes(api.Group("/auth"))
+	recipe.InitializeRoutes(api.Group("/recipes"))
 	api.GET("/health", func(c *gin.Context) {
 		c.Status(http.StatusOK)
 	})

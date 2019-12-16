@@ -1,9 +1,13 @@
 package utils
 
 import (
+	"errors"
 	"log"
 	"strings"
 
+	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
+	"github.com/peterzernia/open-kitchen/models"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -38,4 +42,22 @@ func ParseUserDBError(err error) string {
 	}
 
 	return message
+}
+
+// GetAuthenticatedUser returns the User making a request
+// based on the authentication token provided in the
+// Authorization header.
+func GetAuthenticatedUser(c *gin.Context, db *gorm.DB) (models.User, error) {
+	user := models.User{}
+	token := c.GetHeader("Authorization")
+
+	if token == "" {
+		return user, errors.New("Invalid token")
+	}
+
+	if err := db.Where("token = ?", token).First(&user).Error; err != nil {
+		return user, err
+	}
+
+	return user, nil
 }

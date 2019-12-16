@@ -1,4 +1,4 @@
-module github.com/open-kitchen
+module github.com/peterzernia/open-kitchen
 
 go 1.13
 

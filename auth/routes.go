@@ -12,5 +12,4 @@ func InitializeRoutes(r *gin.RouterGroup) {
 	r.PUT("/user", handleUpdateUser)
 	r.GET("/user", handleGetUser)
 	r.POST("/password/change", handlePasswordChange)
-
 }

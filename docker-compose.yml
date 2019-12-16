@@ -8,7 +8,7 @@ services:
     environment:
       CGO_ENABLED: 0
     volumes:
-      - .:/go/src/github.com/open-kitchen
+      - .:/go/src/github.com/peterzernia/open-kitchen
     ports:
       - "8001:8001"
     depends_on:
