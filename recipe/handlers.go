@@ -1,7 +1,6 @@
 package recipe
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -29,13 +28,18 @@ func handleCreate(c *gin.Context) {
 		return
 	}
 
-	slug, _ := utils.GenerateRandomString(16)
+	slug, err := utils.GenerateRandomString(16)
+
+	if err != nil {
+		c.Status(http.StatusInternalServerError)
+		return
+	}
 
 	recipe.AuthorID = user.ID
 	recipe.Author = &user
 	recipe.Slug = &slug
 
-	if err := db.Create(&recipe).Error; err != nil {
+	if err := createRecipe(db, recipe); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": "Oops! Something went wrong",
 		})
@@ -94,11 +98,40 @@ func handleUpdate(c *gin.Context) {
 	c.JSON(http.StatusOK, recipe)
 }
 
+func handleDelete(c *gin.Context) {
+	db := utils.GetDB()
+	slug := c.Param("slug")
+
+	recipe, err := getRecipe(db, slug)
+
+	if err != nil {
+		c.Status(http.StatusNotFound)
+		return
+	}
+
+	user, err := utils.GetAuthenticatedUser(c, db)
+
+	if err != nil || *user.ID != *recipe.AuthorID {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Invalid Credentials",
+		})
+		return
+	}
+
+	err = deleteRecipe(db, slug)
+
+	if err != nil {
+		c.Status(http.StatusInternalServerError)
+		return
+	}
+
+	c.Status(http.StatusOK)
+	return
+}
+
 func searchRecipes(c *gin.Context) {
 	q, ok := c.GetQuery("q")
 	db := utils.GetDB()
-
-	fmt.Println(q)
 
 	if !ok {
 		c.JSON(http.StatusBadRequest, gin.H{
