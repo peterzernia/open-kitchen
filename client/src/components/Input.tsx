@@ -3,7 +3,7 @@ import Label from 'components/Label'
 
 type Props = {
     className?: string;
-    handleChange?: (e: object) => number;
+    handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     label: string;
     name: string;
     placeholder?: string;

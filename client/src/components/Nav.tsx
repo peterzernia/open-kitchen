@@ -9,6 +9,7 @@ export default function Nav(): React.ReactElement {
   return (
     <nav>
       <Link to="/">Home</Link>
+      <Link to="/search">Search</Link>
       {
         state.authenticated
           && <Link to="/recipes/new">New</Link>

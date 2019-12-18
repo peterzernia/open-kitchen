@@ -44,4 +44,5 @@ export const updateUser = (user: User, token: string): Promise<{}> => withAuth(t
 // Recipe endpoints
 export const createRecipe = (recipe: Recipe, token: string): Promise<{}> => withAuth(token).post('recipes', { json: recipe }).json()
 export const getRecipe = (slug: string): Promise<{}> => api.get(`recipes/${slug}`).json()
-export const editRecipe = (recipe: Recipe, slug: string, token: string): Promise<{}> => withAuth(token).put(`recipes/${slug}`, { json: recipe }).json
+export const editRecipe = (recipe: Recipe, slug: string, token: string): Promise<{}> => withAuth(token).put(`recipes/${slug}`, { json: recipe }).json()
+export const searchRecipes = (q: string): Promise<[]> => api.get(`recipes?q=${q}`).json()
