@@ -11,6 +11,7 @@ import {
 } from 'utils/api'
 import { SET_NOTIFICATION } from 'utils/actions'
 import { StateContext, DispatchContext } from 'utils/context'
+import Loader from 'components/Loader'
 
 type RouteParams = {
   slug: string;
@@ -99,7 +100,7 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
     }
   }
 
-  if (loading) return null
+  if (loading) return <Loader />
 
   return (
     <Form handleSubmit={isNew ? handleCreate : handleEdit} initialValues={recipe}>
