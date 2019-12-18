@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Label from 'components/Label'
 
 type Props = {
     className?: string;
@@ -25,9 +26,7 @@ export default function Input(props: Props): React.ReactElement {
 
   return (
     <div className={className}>
-      <div>
-        <label htmlFor={className}>{required ? `${label} *` : label}</label>
-      </div>
+      <Label label={label} className={className} required={required} />
       <input
         name={name}
         onChange={handleChange}

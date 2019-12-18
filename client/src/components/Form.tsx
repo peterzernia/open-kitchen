@@ -24,7 +24,7 @@ export default function Form(props: Props): React.ReactElement {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newValues = { ...values }
-    newValues[e.target.name] = e.currentTarget.value
+    newValues[e.currentTarget.name] = e.currentTarget.value
     setValues(newValues)
   }
 
