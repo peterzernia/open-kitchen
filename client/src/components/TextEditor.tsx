@@ -1,5 +1,5 @@
 import * as React from 'react'
-import RichTextEditor from 'react-rte'
+import RichTextEditor, { createValueFromString, createEmptyValue } from 'react-rte'
 import Label from 'components/Label'
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
   label: string;
   required?: boolean;
   className?: string;
+  value?: string;
 }
 
 const toolbarConfig = {
@@ -30,21 +31,24 @@ const toolbarConfig = {
 }
 
 export default function TextEditor(props: Props): React.ReactElement {
-  const [value, setValue] = React.useState(RichTextEditor.createEmptyValue())
   const {
     handleChange,
     name,
     label,
     required,
     className,
+    value,
   } = props
+  const [editorValue, setEditorValue] = React.useState(value
+    ? createValueFromString(value, 'html')
+    : createEmptyValue())
 
-  const onChange = (v): void => {
-    setValue(v)
+  const onChange = (v: string): void => {
+    setEditorValue(v)
     handleChange({
       currentTarget: {
         name,
-        value: value.toString('html'),
+        value: editorValue.toString('html'),
       },
     })
   }
@@ -54,7 +58,7 @@ export default function TextEditor(props: Props): React.ReactElement {
       <Label label={label} className={className} required={required} />
       <RichTextEditor
         toolbarConfig={toolbarConfig}
-        value={value}
+        value={editorValue}
         onChange={onChange}
       />
     </div>

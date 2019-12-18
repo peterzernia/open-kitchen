@@ -45,6 +45,7 @@ export default function App(): React.ReactElement {
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
             <PrivateRoute path="/recipes/new" component={RecipeForm} authenticated={state.authenticated} />
+            <PrivateRoute path="/recipes/:slug/edit" component={RecipeForm} authenticated={state.authenticated} />
             <Route path="/register" component={Register} />
             <PrivateRoute path="/profile" component={Profile} authenticated={state.authenticated} />
             <Route component={PageNotFound} />

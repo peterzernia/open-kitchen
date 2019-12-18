@@ -21,6 +21,7 @@ export type Recipe = {
   title: string;
   ingredients: string;
   instructions: string;
+  slug?: string;
 }
 
 const api = ky.create({ prefixUrl: `${process.env.REACT_APP_API_URL}/api/v1/` })
@@ -42,3 +43,5 @@ export const updateUser = (user: User, token: string): Promise<{}> => withAuth(t
 
 // Recipe endpoints
 export const createRecipe = (recipe: Recipe, token: string): Promise<{}> => withAuth(token).post('recipes', { json: recipe }).json()
+export const getRecipe = (slug: string): Promise<{}> => api.get(`recipes/${slug}`).json()
+export const editRecipe = (recipe: Recipe, slug: string, token: string): Promise<{}> => withAuth(token).put(`recipes/${slug}`, { json: recipe }).json
