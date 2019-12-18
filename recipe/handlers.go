@@ -39,7 +39,9 @@ func handleCreate(c *gin.Context) {
 	recipe.Author = &user
 	recipe.Slug = &slug
 
-	if err := createRecipe(db, recipe); err != nil {
+	recipe, err = createRecipe(db, recipe)
+
+	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": "Oops! Something went wrong",
 		})

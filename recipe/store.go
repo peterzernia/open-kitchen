@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-func createRecipe(db *gorm.DB, recipe models.Recipe) error {
+func createRecipe(db *gorm.DB, recipe models.Recipe) (models.Recipe, error) {
 	err := db.Create(&recipe).Error
-	return err
+	return recipe, err
 }
 
 func getRecipe(db *gorm.DB, slug string) (models.Recipe, error) {

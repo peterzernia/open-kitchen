@@ -17,6 +17,12 @@ type User = {
   email: string;
 }
 
+export type Recipe = {
+  title: string;
+  ingredients: string;
+  instructions: string;
+}
+
 const api = ky.create({ prefixUrl: `${process.env.REACT_APP_API_URL}/api/v1/` })
 const withAuth = (token: string): any => api.extend({
   hooks: {
@@ -33,3 +39,6 @@ export const login = (credentials: Login): Promise<{}> => api.post('auth/login',
 export const logout = (token: string): Promise<{}> => withAuth(token).post('auth/logout').json()
 export const register = (credentials: Register): Promise<{}> => api.post('auth/register', { json: credentials }).json()
 export const updateUser = (user: User, token: string): Promise<{}> => withAuth(token).put('auth/user', { json: user }).json()
+
+// Recipe endpoints
+export const createRecipe = (recipe: Recipe, token: string): Promise<{}> => withAuth(token).post('recipes', { json: recipe }).json()

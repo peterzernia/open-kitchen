@@ -9,6 +9,7 @@ import NotificationBanner from 'components/NotificationBanner'
 import Home from 'containers/Home'
 import Login from 'containers/Login'
 import Logout from 'containers/Logout'
+import RecipeForm from 'containers/RecipeForm'
 import Register from 'containers/Register'
 import Profile from 'containers/Profile'
 import PageNotFound from 'containers/PageNotFound'
@@ -43,6 +44,7 @@ export default function App(): React.ReactElement {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Logout} />
+            <PrivateRoute path="/recipes/new" component={RecipeForm} authenticated={state.authenticated} />
             <Route path="/register" component={Register} />
             <PrivateRoute path="/profile" component={Profile} authenticated={state.authenticated} />
             <Route component={PageNotFound} />
