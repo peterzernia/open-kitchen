@@ -4,11 +4,11 @@ import Form from 'components/Form'
 import Input from 'components/Input'
 import TextEditor from 'components/TextEditor'
 import {
-  Recipe,
   createRecipe,
   editRecipe,
   getRecipe,
 } from 'utils/api'
+import { Recipe } from 'types'
 import { SET_NOTIFICATION } from 'utils/actions'
 import { StateContext, DispatchContext } from 'utils/context'
 import Loader from 'components/Loader'

@@ -5,20 +5,16 @@ import Input from 'components/Input'
 import { SET_USER, SET_NOTIFICATION } from 'utils/actions'
 import { StateContext, DispatchContext } from 'utils/context'
 import { login } from 'utils/api'
+import { Login } from 'types'
 
-type Payload = {
-  username: string;
-  password: string;
-}
-
-export default function Login(props: RouteComponentProps): React.ReactElement {
+export default function LoginPage(props: RouteComponentProps): React.ReactElement {
   const { history } = props
   const { location } = history
   const state = React.useContext(StateContext)
   const dispatch = React.useContext(DispatchContext)
   const secondaryButton = { label: 'Register', handleClick: (): void => history.push('/register') }
 
-  const handleSubmit = async (payload: Payload): Promise<void> => {
+  const handleSubmit = async (payload: Login): Promise<void> => {
     try {
       const res = await login(payload)
 

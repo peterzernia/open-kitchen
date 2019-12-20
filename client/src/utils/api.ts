@@ -1,28 +1,10 @@
 import ky from 'ky'
-
-type Login = {
-  username: string;
-  password: string;
-}
-
-type Register = {
-  username: string;
-  email: string;
-  password1: string;
-  password2: string;
-}
-
-type User = {
-  username: string;
-  email: string;
-}
-
-export type Recipe = {
-  title: string;
-  ingredients: string;
-  instructions: string;
-  slug?: string;
-}
+import {
+  Login,
+  Register,
+  User,
+  Recipe,
+} from 'types'
 
 const api = ky.create({ prefixUrl: `${process.env.REACT_APP_API_URL}/api/v1/` })
 const withAuth = (token: string): any => api.extend({

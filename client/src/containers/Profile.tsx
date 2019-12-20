@@ -4,11 +4,7 @@ import Input from 'components/Input'
 import { updateUser } from 'utils/api'
 import { SET_USER, SET_NOTIFICATION } from 'utils/actions'
 import { DispatchContext, StateContext } from 'utils/context'
-
-type Payload = {
-  username: string;
-  email: string;
-}
+import { User } from 'types'
 
 export default function Profile(): React.ReactElement {
   const [editProfile, setEditProfile] = React.useState(false)
@@ -17,7 +13,7 @@ export default function Profile(): React.ReactElement {
   const initialValues = { username: state.user.username, email: state.user.email }
   const secondaryButton = { label: 'Cancel', handleClick: (): void => setEditProfile(false) }
 
-  const handleSubmit = async (payload: Payload): Promise<void> => {
+  const handleSubmit = async (payload: User): Promise<void> => {
     try {
       const res = await updateUser(payload, state.user.token)
 
