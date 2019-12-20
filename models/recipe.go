@@ -13,6 +13,7 @@ type Recipe struct {
 	Description  *string `json:"description" binding:"required"`
 	Ingredients  *string `json:"ingredients" binding:"required"`
 	Instructions *string `json:"instructions" binding:"required"`
+	Notes        *string `json:"notes"`
 	Slug         *string `json:"slug"`
 	Title        *string `json:"title" binding:"required"`
 }

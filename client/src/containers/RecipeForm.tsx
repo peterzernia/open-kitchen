@@ -125,6 +125,10 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         name="instructions"
         required
       />
+      <TextEditor
+        label="Notes"
+        name="notes"
+      />
     </Form>
   )
 }
