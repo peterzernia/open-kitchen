@@ -29,8 +29,8 @@ func main() {
 	router.Use(cors.New(config))
 
 	api := router.Group("/api/v1")
-	auth.InitializeRoutes(api.Group("/auth"))
-	recipe.InitializeRoutes(api.Group("/recipes"))
+	auth.InitializeRoutes(api)
+	recipe.InitializeRoutes(api)
 	api.GET("/health", func(c *gin.Context) {
 		c.Status(http.StatusOK)
 	})

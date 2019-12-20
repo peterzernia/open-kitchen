@@ -35,3 +35,15 @@ func getRecipesByQuery(db *gorm.DB, q string) ([]models.Recipe, error) {
 		Find(&recipes).Error
 	return recipes, err
 }
+
+func getRecipesByUser(db *gorm.DB, username string) ([]models.Recipe, error) {
+	recipes := []models.Recipe{}
+
+	err := db.Preload("Author").
+		Select("*").
+		Joins("LEFT JOIN users ON users.id = recipes.author_id").
+		Where("users.username = ?", username).
+		Find(&recipes).Error
+
+	return recipes, err
+}

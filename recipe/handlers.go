@@ -149,3 +149,16 @@ func searchRecipes(c *gin.Context) {
 
 	c.JSON(http.StatusOK, recipes)
 }
+
+func handleGetByUser(c *gin.Context) {
+	db := utils.GetDB()
+	username := c.Param("username")
+
+	recipes, err := getRecipesByUser(db, username)
+
+	if err != nil {
+		c.Status(http.StatusInternalServerError)
+	}
+
+	c.JSON(http.StatusOK, recipes)
+}

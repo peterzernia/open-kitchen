@@ -6,10 +6,12 @@ import (
 
 // InitializeRoutes initializes routes for the App
 func InitializeRoutes(r *gin.RouterGroup) {
-	r.POST("/register", handleRegistration)
-	r.POST("/login", handleLogin)
-	r.POST("/logout", handleLogout)
-	r.PUT("/user", handleUpdateUser)
-	r.GET("/user", handleGetUser)
-	r.POST("/password/change", handlePasswordChange)
+	auth := r.Group("/auth")
+
+	auth.POST("/register", handleRegistration)
+	auth.POST("/login", handleLogin)
+	auth.POST("/logout", handleLogout)
+	auth.PUT("/user", handleUpdateUser)
+	auth.GET("/user", handleGetUser)
+	auth.POST("/password/change", handlePasswordChange)
 }

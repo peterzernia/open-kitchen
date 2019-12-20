@@ -6,9 +6,12 @@ import (
 
 // InitializeRoutes initializes routes for the App
 func InitializeRoutes(r *gin.RouterGroup) {
-	r.POST("", handleCreate)
-	r.GET("/:slug", handleGet)
-	r.PUT("/:slug", handleUpdate)
-	r.DELETE("/:slug", handleDelete)
-	r.GET("", searchRecipes)
+	recipes := r.Group("/recipes")
+
+	r.GET("/users/:username/recipes", handleGetByUser)
+	recipes.POST("", handleCreate)
+	recipes.GET("/:slug", handleGet)
+	recipes.PUT("/:slug", handleUpdate)
+	recipes.DELETE("/:slug", handleDelete)
+	recipes.GET("", searchRecipes)
 }
