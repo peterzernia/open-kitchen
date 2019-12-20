@@ -2,6 +2,7 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { getRecipesByUser } from 'utils/api'
 import Loader from 'components/Loader'
+import Card from 'components/Card'
 
 type RouteParams = {
   username: string;
@@ -34,10 +35,11 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
     <div>
       {
         recipes.map((recipe) => (
-          <div key={recipe.slug}>
-            <div>{`${recipe.title} - ${recipe.author && recipe.author.username}`}</div>
-            <div>{recipe.instructions}</div>
-          </div>
+          <Card
+            key={recipe.slug}
+            title={`${recipe.title} - ${recipe.author && recipe.author.username}`}
+            body={recipe.description}
+          />
         ))
       }
     </div>

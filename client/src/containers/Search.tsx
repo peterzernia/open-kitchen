@@ -3,6 +3,7 @@ import Input from 'components/Input'
 import Loader from 'components/Loader'
 import { searchRecipes } from 'utils/api'
 import { useDebounce } from 'utils/hooks'
+import Card from 'components/Card'
 
 export default function Search(): React.ReactElement {
   const [value, setValue] = React.useState('')
@@ -48,10 +49,11 @@ export default function Search(): React.ReactElement {
       { loading && <Loader />}
       {
         recipes.map((recipe) => (
-          <div key={recipe.slug}>
-            <div>{`${recipe.title} - ${recipe.author && recipe.author.username}`}</div>
-            <div>{recipe.instructions}</div>
-          </div>
+          <Card
+            key={recipe.slug}
+            title={`${recipe.title} - ${recipe.author && recipe.author.username}`}
+            body={recipe.description}
+          />
         ))
       }
     </div>
