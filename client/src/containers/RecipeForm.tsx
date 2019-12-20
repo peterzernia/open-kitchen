@@ -111,6 +111,11 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         required
       />
       <TextEditor
+        label="Description"
+        name="description"
+        required
+      />
+      <TextEditor
         label="Ingredients"
         name="ingredients"
         required

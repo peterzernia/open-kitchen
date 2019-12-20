@@ -10,6 +10,7 @@ type Recipe struct {
 
 	Author       *User   `json:"author" gorm:"save_associations:false"`
 	AuthorID     *int64  `json:"author_id"`
+	Description  *string `json:"description" binding:"required"`
 	Ingredients  *string `json:"ingredients" binding:"required"`
 	Instructions *string `json:"instructions" binding:"required"`
 	Slug         *string `json:"slug"`
