@@ -20,6 +20,10 @@ export default function Nav(): React.ReactElement {
       }
       {
         state.authenticated
+          && <Link to={`/recipes/${state.user.username}`}>Recipes</Link>
+      }
+      {
+        state.authenticated
           ? <Link to="/logout">Logout</Link>
           : <Link to="/login">Login</Link>
       }

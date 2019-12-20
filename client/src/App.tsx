@@ -11,6 +11,7 @@ import Login from 'containers/Login'
 import Logout from 'containers/Logout'
 import PageNotFound from 'containers/PageNotFound'
 import Profile from 'containers/Profile'
+import RecipeBook from 'containers/RecipeBook'
 import RecipeForm from 'containers/RecipeForm'
 import Register from 'containers/Register'
 import Search from 'containers/Search'
@@ -48,6 +49,7 @@ export default function App(): React.ReactElement {
             <PrivateRoute path="/profile" component={Profile} authenticated={state.authenticated} />
             <PrivateRoute path="/recipes/new" component={RecipeForm} authenticated={state.authenticated} />
             <PrivateRoute path="/recipes/:slug/edit" component={RecipeForm} authenticated={state.authenticated} />
+            <Route path="/recipes/:username" component={RecipeBook} />
             <Route path="/register" component={Register} />
             <Route path="/search" component={Search} />
             <Route component={PageNotFound} />
