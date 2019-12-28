@@ -4,3 +4,8 @@ form {
   padding: 8px;
   border-radius: 8px;
 }
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+}

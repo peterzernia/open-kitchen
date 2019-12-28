@@ -4,6 +4,7 @@ import Loader from 'components/Loader'
 import { searchRecipes } from 'utils/api'
 import { useDebounce } from 'utils/hooks'
 import Card from 'components/Card'
+import './Search.css'
 
 export default function Search(): React.ReactElement {
   const [value, setValue] = React.useState('')
@@ -39,23 +40,28 @@ export default function Search(): React.ReactElement {
 
   return (
     <div>
-      <Input
-        label=""
-        name=""
-        type="text"
-        handleChange={handleChange}
-        value={value}
-      />
+      <div className="search-bar mx">
+        <Input
+          label=""
+          name=""
+          type="text"
+          placeholder="Search"
+          handleChange={handleChange}
+          value={value}
+        />
+      </div>
       { loading && <Loader />}
-      {
-        recipes.map((recipe) => (
-          <Card
-            key={recipe.slug}
-            title={`${recipe.title} - ${recipe.author && recipe.author.username}`}
-            body={recipe.description}
-          />
-        ))
-      }
+      <div>
+        {
+          recipes.map((recipe) => (
+            <Card
+              key={recipe.slug}
+              title={`${recipe.title} - ${recipe.author && recipe.author.username}`}
+              body={recipe.description}
+            />
+          ))
+        }
+      </div>
     </div>
   )
 }
