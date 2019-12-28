@@ -1,5 +1,7 @@
 import * as React from 'react'
 import Label from 'components/Label'
+import Element from 'components/Element'
+import './Input.css'
 
 type Props = {
     className?: string;
@@ -14,7 +16,6 @@ type Props = {
 
 export default function Input(props: Props): React.ReactElement {
   const {
-    className,
     handleChange,
     label,
     name,
@@ -25,16 +26,18 @@ export default function Input(props: Props): React.ReactElement {
   } = props
 
   return (
-    <div className={className}>
-      <Label label={label} className={className} required={required} />
-      <input
-        name={name}
-        onChange={handleChange}
-        placeholder={placeholder}
-        required={required}
-        type={type}
-        value={value}
-      />
-    </div>
+    <Element>
+      <Label label={label} htmlFor="html-element" required={required} />
+      <div className="input-container">
+        <input
+          name={name}
+          onChange={handleChange}
+          placeholder={placeholder}
+          required={required}
+          type={type}
+          value={value}
+        />
+      </div>
+    </Element>
   )
 }

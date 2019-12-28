@@ -1,13 +1,14 @@
 import * as React from 'react'
 import RichTextEditor, { createValueFromString, createEmptyValue } from 'react-rte'
 import Label from 'components/Label'
+import Element from 'components/Element'
+import './TextEditor.css'
 
 type Props = {
   handleChange?: (e: object) => number;
   name: string;
   label: string;
   required?: boolean;
-  className?: string;
   value?: string;
 }
 
@@ -36,7 +37,6 @@ export default function TextEditor(props: Props): React.ReactElement {
     name,
     label,
     required,
-    className,
     value,
   } = props
   const [editorValue, setEditorValue] = React.useState(
@@ -69,9 +69,10 @@ export default function TextEditor(props: Props): React.ReactElement {
   }
 
   return (
-    <div>
-      <Label label={label} className={className} required={required} />
+    <Element>
+      <Label label={label} htmlFor="html-element" required={required} />
       <RichTextEditor
+        className="text-editor"
         toolbarConfig={toolbarConfig}
         value={editorValue}
         onChange={onChange}
@@ -95,6 +96,6 @@ export default function TextEditor(props: Props): React.ReactElement {
           />
         )
       }
-    </div>
+    </Element>
   )
 }

@@ -1,22 +1,21 @@
 import * as React from 'react'
 import { DispatchContext } from 'utils/context'
 import { CLEAR_NOTIFICATION } from 'utils/actions'
+import { Notification as Notif } from 'types'
+import './Notification.css'
 
 type Props = {
-  notification: {
-    message?: string;
-    type?: 'error' | 'success';
-  };
+  notification: Notif;
 }
 
-export default function NotificationBanner(props: Props): React.ReactElement {
+export default function Notification(props: Props): React.ReactElement {
   const dispatch = React.useContext(DispatchContext)
   const { notification } = props
 
   if (!notification.message && !notification.type) return null
 
   return (
-    <div className={`${notification.type}`}>
+    <div className={`notification-${notification.type}`}>
       {notification.message}
       <button
         type="button"

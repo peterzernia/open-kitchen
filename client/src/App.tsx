@@ -5,7 +5,7 @@ import { reducer, initialState } from 'utils/reducer'
 import { SET_USER } from 'utils/actions'
 import PrivateRoute from 'components/PrivateRoute'
 import Nav from 'components/Nav'
-import NotificationBanner from 'components/NotificationBanner'
+import Notification from 'components/Notification'
 import Home from 'containers/Home'
 import Login from 'containers/Login'
 import Logout from 'containers/Logout'
@@ -41,7 +41,7 @@ export default function App(): React.ReactElement {
       <StateContext.Provider value={state}>
         <Router>
           <Nav />
-          <NotificationBanner notification={state.notification} />
+          <Notification notification={state.notification} />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
