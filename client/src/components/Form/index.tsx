@@ -44,7 +44,7 @@ export default function Form(props: Props): React.ReactElement {
   }))
 
   return (
-    <form>
+    <form className="mx">
       {inputs}
       <div>
         <button type="submit" onClick={handleSubmit}>
