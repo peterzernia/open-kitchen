@@ -1,10 +1,10 @@
-.loader {
+.loader-container {
   display: flex;
   justify-content: center;
   height: 90vh;
 }
 
-.loader div {
+.loader {
   border-top: 0.2em solid rgba(10, 190, 160, 0.2);
   border-right: 0.2em solid rgba(10, 190, 160, 0.2);
   border-bottom: 0.2em solid rgba(10, 190, 160, 0.2);
@@ -14,8 +14,8 @@
   align-self: center;
 }
 
-.loader div,
-.loader div:after {
+.loader,
+.loader:after {
   border-radius: 50%;
   width: 5em;
   height: 5em;
