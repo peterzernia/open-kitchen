@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './Element.css'
+import './HTMLElement.css'
 
 type Props = {
   children: React.ReactElement[];

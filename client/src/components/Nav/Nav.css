@@ -1,0 +1,15 @@
+nav {
+  height: 48px;
+  line-height: 48px;
+  margin-bottom: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.nav-right {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}

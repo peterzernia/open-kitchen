@@ -15,7 +15,6 @@ import RecipeBook from 'containers/RecipeBook'
 import RecipeForm from 'containers/RecipeForm'
 import Register from 'containers/Register'
 import Search from 'containers/Search'
-
 import 'App.css'
 
 export default function App(): React.ReactElement {

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Label from 'components/Label'
-import Element from 'components/Element'
+import Element from 'components/HTMLElement'
 import './Input.css'
 
 type Props = {

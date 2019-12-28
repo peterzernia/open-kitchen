@@ -1,3 +1,20 @@
 .text-editor {
   height: 150px;
 }
+
+/* Allows text editor to focus if clicked anywhere in the box */
+.RichTextEditor__root___2QXK- {
+  display: flex;
+  flex-direction: column;
+}
+
+.RichTextEditor__editor___1QqIU,
+.DraftEditor-root,
+.DraftEditor-editorContainer {
+  flex-grow: 1;
+  display: flex;
+}
+
+.public-DraftEditor-content {
+  flex-grow: 1;
+}

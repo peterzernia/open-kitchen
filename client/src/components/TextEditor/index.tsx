@@ -1,7 +1,7 @@
 import * as React from 'react'
 import RichTextEditor, { createValueFromString, createEmptyValue } from 'react-rte'
 import Label from 'components/Label'
-import Element from 'components/Element'
+import Element from 'components/HTMLElement'
 import './TextEditor.css'
 
 type Props = {
