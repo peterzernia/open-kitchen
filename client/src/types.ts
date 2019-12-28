@@ -23,3 +23,8 @@ export type Recipe = {
   notes: string;
   slug?: string;
 }
+
+export type Notification = {
+  type: 'error' | 'success';
+  message: string;
+}

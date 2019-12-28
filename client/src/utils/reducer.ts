@@ -5,22 +5,24 @@ import {
   CLEAR_NOTIFICATION,
   RESET,
 } from 'utils/actions'
+import { User, Notification } from 'types'
 
 type Action = {
   type: string;
-  payload?: object;
+  payload?: any;
 }
 
 type State = {
-  user: object;
+  user: User;
   authenticated: boolean;
-  notification: object;
+  notification: Notification;
 }
 
 export const initialState = {
-  user: {},
+  user: {} as User,
   authenticated: false,
-  notification: {},
+  notification: {} as Notification,
+
 }
 
 export const reducer = (state: State, action: Action): State => {
