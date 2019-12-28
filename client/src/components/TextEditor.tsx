@@ -39,18 +39,33 @@ export default function TextEditor(props: Props): React.ReactElement {
     className,
     value,
   } = props
-  const [editorValue, setEditorValue] = React.useState(value
-    ? createValueFromString(value, 'html')
-    : createEmptyValue())
+  const [editorValue, setEditorValue] = React.useState(
+    value
+      ? createValueFromString(value, 'html')
+      : createEmptyValue(),
+  )
+
+  const ref = React.useRef(null)
 
   const onChange = (v: string): void => {
     setEditorValue(v)
-    handleChange({
-      currentTarget: {
-        name,
-        value: editorValue.toString('html'),
-      },
-    })
+
+    // Reset form state when field is 'blank'
+    if (editorValue.toString('html') === '<p><br></p>') {
+      handleChange({
+        currentTarget: {
+          name,
+          value: '',
+        },
+      })
+    } else {
+      handleChange({
+        currentTarget: {
+          name,
+          value: editorValue.toString('html'),
+        },
+      })
+    }
   }
 
   return (
@@ -60,7 +75,26 @@ export default function TextEditor(props: Props): React.ReactElement {
         toolbarConfig={toolbarConfig}
         value={editorValue}
         onChange={onChange}
+        ref={ref}
       />
+      {
+        // Shows native validation message
+        required && (
+          <input
+            style={{
+              opacity: 0,
+              width: 0,
+              height: 0,
+              position: 'absolute',
+            }}
+            tabIndex={-1}
+            value={value}
+            required={required}
+            onChange={handleChange}
+            onFocus={(): void => ref.current._focus()} // eslint-disable-line
+          />
+        )
+      }
     </div>
   )
 }
