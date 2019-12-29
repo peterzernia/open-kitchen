@@ -6,7 +6,7 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   moduleNameMapper: {
-    '\\.css$': 'identity-obj-proxy',
+    '.+\\.(css|svg|png|jpg)$': 'identity-obj-proxy',
     '^ky$': require.resolve('ky').replace('index.js', 'umd.js'),
   },
   moduleDirectories: [
