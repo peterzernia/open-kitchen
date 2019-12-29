@@ -9,9 +9,12 @@
   padding-right: 24px;
 }
 
+.recipeview-description,
 .recipeview-ingredients,
-.recipeview-instructions {
+.recipeview-instructions,
+.recipeview-notes {
   text-align: left;
+  margin: 16px 0px;
 }
 
 .recipeview-share {

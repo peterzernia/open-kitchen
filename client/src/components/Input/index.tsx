@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Label from 'components/Label'
-import Element from 'components/HTMLElement'
+import HTMLElement from 'components/HTMLElement'
 import './Input.css'
 
 type Props = {
@@ -26,7 +26,7 @@ export default function Input(props: Props): React.ReactElement {
   } = props
 
   return (
-    <Element>
+    <HTMLElement>
       <Label label={label} htmlFor="html-element" required={required} />
       <div className="input-container">
         <input
@@ -38,6 +38,6 @@ export default function Input(props: Props): React.ReactElement {
           value={value}
         />
       </div>
-    </Element>
+    </HTMLElement>
   )
 }

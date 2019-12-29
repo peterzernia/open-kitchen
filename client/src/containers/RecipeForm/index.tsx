@@ -2,6 +2,7 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import Form from 'components/Form'
 import Input from 'components/Input'
+import TextArea from 'components/TextArea'
 import TextEditor from 'components/TextEditor'
 import {
   createRecipe,
@@ -112,9 +113,10 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         type="text"
         required
       />
-      <TextEditor
+      <TextArea
         label="Description"
         name="description"
+        resize="none"
         required
       />
       <TextEditor
@@ -127,9 +129,10 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         name="instructions"
         required
       />
-      <TextEditor
+      <TextArea
         label="Notes"
         name="notes"
+        resize="none"
       />
     </Form>
   )

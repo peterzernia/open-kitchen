@@ -51,8 +51,10 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
       }
       <h1>{recipe.title}</h1>
       <h3>{recipe.author.username}</h3>
+      <div className="recipeview-description">{recipe.description}</div>
       <div className="recipeview-ingredients">{recipe.ingredients}</div>
       <div className="recipeview-instructions">{recipe.instructions}</div>
+      <div className="recipeview-notes">{recipe.notes}</div>
       <div className="recipeview-share">
         <a href={`https://www.facebook/share.php?u=${process.env.REACT_APP_API_URL}/recipes/${slug}/view`}>
           <img height={16} src={Facebook} alt="facebook" />
