@@ -38,7 +38,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
 
   return (
     <div>
-      <div className="recipebook-settings-container">
+      <div className="recipebook-settings">
         <Button onClick={(): void => history.push('/profile')} icon>
           <img src={Settings} alt="settings" />
         </Button>

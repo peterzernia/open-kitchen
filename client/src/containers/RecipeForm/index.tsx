@@ -90,7 +90,7 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         },
       })
 
-      history.push(`/recipes/${state.user.username}`)
+      history.push(`/recipes/${slug}/view`)
     } catch (err) {
       dispatch({
         type: SET_NOTIFICATION,
