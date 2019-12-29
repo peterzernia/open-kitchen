@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router-dom'
 import Form from 'components/Form'
 import Input from 'components/Input'
 import { updateUser } from 'utils/api'
@@ -6,12 +7,12 @@ import { SET_USER, SET_NOTIFICATION } from 'utils/actions'
 import { DispatchContext, StateContext } from 'utils/context'
 import { User } from 'types'
 
-export default function Profile(): React.ReactElement {
-  const [editProfile, setEditProfile] = React.useState(false)
+export default function Profile(props: RouteComponentProps): React.ReactElement {
   const dispatch = React.useContext(DispatchContext)
   const state = React.useContext(StateContext)
+  const { history } = props
   const initialValues = { username: state.user.username, email: state.user.email }
-  const secondaryButton = { label: 'Cancel', handleClick: (): void => setEditProfile(false) }
+  const secondaryButton = { label: 'Cancel', handleClick: (): void => history.push(`/recipes/${state.user.username}`) }
 
   const handleSubmit = async (payload: User): Promise<void> => {
     try {
@@ -19,10 +20,8 @@ export default function Profile(): React.ReactElement {
 
       dispatch({
         type: SET_USER,
-        payload: res,
+        payload: { ...res, token: state.user.token },
       })
-
-      setEditProfile(false)
 
       dispatch({
         type: SET_NOTIFICATION,
@@ -31,6 +30,8 @@ export default function Profile(): React.ReactElement {
           message: 'Successfully updated your profile',
         },
       })
+
+      history.push(`/recipes/${res.username}`)
     } catch (err) {
       dispatch({
         type: SET_NOTIFICATION,
@@ -44,23 +45,14 @@ export default function Profile(): React.ReactElement {
 
   return (
     <div>
-      {
-        !editProfile
-          ? (
-            <button type="button" onClick={(): void => setEditProfile(true)}>
-              Edit Profile
-            </button>
-          ) : (
-            <Form
-              handleSubmit={handleSubmit}
-              initialValues={initialValues}
-              secondaryButton={secondaryButton}
-            >
-              <Input label="Username" name="username" type="text" />
-              <Input label="Email" name="email" type="text" />
-            </Form>
-          )
-      }
+      <Form
+        handleSubmit={handleSubmit}
+        initialValues={initialValues}
+        secondaryButton={secondaryButton}
+      >
+        <Input label="Username" name="username" type="text" />
+        <Input label="Email" name="email" type="text" />
+      </Form>
     </div>
   )
 }

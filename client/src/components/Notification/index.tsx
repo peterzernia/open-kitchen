@@ -15,8 +15,8 @@ export default function Notification(props: Props): React.ReactElement {
   if (!notification.message && !notification.type) return null
 
   return (
-    <div className={`notification-${notification.type}`}>
-      {notification.message}
+    <div className={`notification notification-${notification.type}`}>
+      <div>{notification.message}</div>
       <button
         type="button"
         onClick={(): void => { dispatch({ type: CLEAR_NOTIFICATION }) }}

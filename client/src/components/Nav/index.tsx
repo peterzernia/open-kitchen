@@ -13,10 +13,6 @@ export default function Nav(): React.ReactElement {
         <Link to="/search">Search</Link>
         {
           state.authenticated
-            && <Link to="/profile">Profile</Link>
-        }
-        {
-          state.authenticated
             && <Link to={`/recipes/${state.user.username}`}>Recipes</Link>
         }
         {

@@ -4,6 +4,9 @@ import { getRecipesByUser } from 'utils/api'
 import Loader from 'components/Loader'
 import Card from 'components/Card'
 import FAB from 'components/FAB'
+import Button from 'components/Button'
+import Settings from 'assets/settings.svg'
+import './RecipeBook.css'
 
 type RouteParams = {
   username: string;
@@ -34,6 +37,11 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
 
   return (
     <div>
+      <div className="recipebook-settings-container">
+        <Button onClick={(): void => history.push('/profile')} icon>
+          <img src={Settings} alt="settings" />
+        </Button>
+      </div>
       {
         recipes.map((recipe) => (
           <Card

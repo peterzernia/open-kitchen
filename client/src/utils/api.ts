@@ -18,14 +18,14 @@ const withAuth = (token: string): any => api.extend({
 })
 
 // Auth endpoints
-export const login = (credentials: Login): Promise<{}> => api.post('auth/login', { json: credentials }).json()
-export const logout = (token: string): Promise<{}> => withAuth(token).post('auth/logout').json()
-export const register = (credentials: Register): Promise<{}> => api.post('auth/register', { json: credentials }).json()
-export const updateUser = (user: User, token: string): Promise<{}> => withAuth(token).put('auth/user', { json: user }).json()
+export const login = (credentials: Login): Promise<User> => api.post('auth/login', { json: credentials }).json()
+export const logout = (token: string): Promise<void> => withAuth(token).post('auth/logout').json()
+export const register = (credentials: Register): Promise<User> => api.post('auth/register', { json: credentials }).json()
+export const updateUser = (user: User, token: string): Promise<User> => withAuth(token).put('auth/user', { json: user }).json()
 
 // Recipe endpoints
-export const createRecipe = (recipe: Recipe, token: string): Promise<{}> => withAuth(token).post('recipes', { json: recipe }).json()
-export const getRecipe = (slug: string): Promise<{}> => api.get(`recipes/${slug}`).json()
-export const editRecipe = (recipe: Recipe, slug: string, token: string): Promise<{}> => withAuth(token).put(`recipes/${slug}`, { json: recipe }).json()
-export const searchRecipes = (q: string): Promise<[]> => api.get(`recipes?q=${q}`).json()
-export const getRecipesByUser = (username: string): Promise<[]> => api.get(`users/${username}/recipes`).json()
+export const createRecipe = (recipe: Recipe, token: string): Promise<Recipe> => withAuth(token).post('recipes', { json: recipe }).json()
+export const getRecipe = (slug: string): Promise<Recipe> => api.get(`recipes/${slug}`).json()
+export const editRecipe = (recipe: Recipe, slug: string, token: string): Promise<Recipe> => withAuth(token).put(`recipes/${slug}`, { json: recipe }).json()
+export const searchRecipes = (q: string): Promise<Recipe[]> => api.get(`recipes?q=${q}`).json()
+export const getRecipesByUser = (username: string): Promise<Recipe[]> => api.get(`users/${username}/recipes`).json()
