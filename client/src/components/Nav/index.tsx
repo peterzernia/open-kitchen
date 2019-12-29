@@ -8,7 +8,7 @@ export default function Nav(): React.ReactElement {
 
   return (
     <nav>
-      <Link to="/">Open Kitchen</Link>
+      <Link to="/">Home</Link>
       <div className="nav-right">
         <Link to="/search">Search</Link>
         {
