@@ -1,0 +1,13 @@
+.fab {
+  border: none;
+  cursor: pointer;
+  background: none;
+
+  height: 48px;
+  width: 48px;
+  border-radius: 48px;
+
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}

@@ -57,7 +57,6 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
   const handleCreate = async (payload: Recipe): Promise<void> => {
     try {
       await createRecipe(payload, state.user.token)
-      history.push('/')
 
       dispatch({
         type: SET_NOTIFICATION,
@@ -66,6 +65,8 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
           message: 'Successfully created',
         },
       })
+
+      history.push(`/recipes/${state.user.username}`)
     } catch (err) {
       dispatch({
         type: SET_NOTIFICATION,
@@ -80,7 +81,6 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
   const handleEdit = async (payload: Recipe): Promise<void> => {
     try {
       await editRecipe(payload, slug, state.user.token)
-      history.push('/')
 
       dispatch({
         type: SET_NOTIFICATION,
@@ -89,6 +89,8 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
           message: 'Successfully edited',
         },
       })
+
+      history.push(`/recipes/${state.user.username}`)
     } catch (err) {
       dispatch({
         type: SET_NOTIFICATION,

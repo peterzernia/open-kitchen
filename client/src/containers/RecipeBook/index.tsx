@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { getRecipesByUser } from 'utils/api'
 import Loader from 'components/Loader'
 import Card from 'components/Card'
+import FAB from 'components/FAB'
 
 type RouteParams = {
   username: string;
@@ -11,7 +12,7 @@ type RouteParams = {
 export default function RecipeBook(props: RouteComponentProps<RouteParams>): React.ReactElement {
   const [recipes, setRecipes] = React.useState([])
   const [loading, setLoading] = React.useState(true)
-  const { match } = props
+  const { history, match } = props
   const { username } = match.params
 
   React.useEffect(() => {
@@ -42,6 +43,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
           />
         ))
       }
+      <FAB color="lightblue" onClick={(): void => history.push('/recipes/new')} />
     </div>
   )
 }
