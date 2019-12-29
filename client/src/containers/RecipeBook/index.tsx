@@ -42,15 +42,17 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
           <img src={Settings} alt="settings" />
         </Button>
       </div>
-      {
-        recipes.map((recipe) => (
-          <Card
-            key={recipe.slug}
-            title={recipe.title}
-            body={recipe.description}
-          />
-        ))
-      }
+      <div className="grid">
+        {
+          recipes.map((recipe) => (
+            <Card
+              key={recipe.slug}
+              title={recipe.title}
+              body={recipe.description}
+            />
+          ))
+        }
+      </div>
       <FAB color="lightblue" onClick={(): void => history.push('/recipes/new')} />
     </div>
   )
