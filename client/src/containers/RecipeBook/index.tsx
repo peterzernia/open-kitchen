@@ -50,6 +50,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
               key={recipe.slug}
               title={recipe.title}
               body={recipe.description}
+              onClick={(): void => history.push(`/recipes/${recipe.slug}/view`)}
             />
           ))
         }
