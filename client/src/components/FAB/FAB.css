@@ -3,9 +3,10 @@
   cursor: pointer;
   background: none;
 
-  height: 48px;
-  width: 48px;
-  border-radius: 48px;
+  height: 64px;
+  width: 64px;
+  border-radius: 64px;
+  box-shadow: 0 0 3px #ccc;
 
   position: fixed;
   right: 24px;
