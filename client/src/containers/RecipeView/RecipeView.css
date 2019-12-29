@@ -1,5 +1,22 @@
+.recipeview {
+  text-align: center;
+  padding: 16px;
+}
+
 .recipeview-edit {
   display: flex;
   justify-content: flex-end;
   padding-right: 24px;
+}
+
+.recipeview-ingredients,
+.recipeview-instructions {
+  text-align: left;
+}
+
+.recipeview-share {
+  margin: 96px auto;
+  width: 112px;
+  display: flex;
+  justify-content: space-between;
 }
