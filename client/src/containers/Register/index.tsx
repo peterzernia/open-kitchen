@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
-import { register } from 'utils/api'
+import { register } from 'common/api'
 import Form from 'components/Form'
 import Input from 'components/Input'
-import { SET_USER, SET_NOTIFICATION } from 'utils/actions'
-import { StateContext, DispatchContext } from 'utils/context'
+import { SET_USER, SET_NOTIFICATION } from 'common/actions'
+import { StateContext, DispatchContext } from 'common/context'
 import { Register } from 'types'
 
 export default function RegisterPage(props: RouteComponentProps): React.ReactElement {

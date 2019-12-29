@@ -7,10 +7,10 @@ import {
   createRecipe,
   editRecipe,
   getRecipe,
-} from 'utils/api'
+} from 'common/api'
 import { Recipe } from 'types'
-import { SET_NOTIFICATION } from 'utils/actions'
-import { StateContext, DispatchContext } from 'utils/context'
+import { SET_NOTIFICATION } from 'common/actions'
+import { StateContext, DispatchContext } from 'common/context'
 import Loader from 'components/Loader'
 
 type RouteParams = {

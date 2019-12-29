@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { StateContext } from 'utils/context'
+import { StateContext } from 'common/context'
 import './Nav.css'
 
 export default function Nav(): React.ReactElement {

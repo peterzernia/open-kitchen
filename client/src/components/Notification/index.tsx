@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { DispatchContext } from 'utils/context'
-import { CLEAR_NOTIFICATION } from 'utils/actions'
+import { DispatchContext } from 'common/context'
+import { CLEAR_NOTIFICATION } from 'common/actions'
 import { Notification as Notif } from 'types'
 import './Notification.css'
 

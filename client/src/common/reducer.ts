@@ -4,7 +4,7 @@ import {
   SET_NOTIFICATION,
   CLEAR_NOTIFICATION,
   RESET,
-} from 'utils/actions'
+} from 'common/actions'
 import { User, Notification } from 'types'
 
 type Action = {

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Input from 'components/Input'
 import Loader from 'components/Loader'
-import { searchRecipes } from 'utils/api'
-import { useDebounce } from 'utils/hooks'
+import { searchRecipes } from 'common/api'
+import { useDebounce } from 'common/hooks'
 import Card from 'components/Card'
 import './Search.css'
 

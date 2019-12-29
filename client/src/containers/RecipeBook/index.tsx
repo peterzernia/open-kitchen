@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { getRecipesByUser } from 'utils/api'
+import { getRecipesByUser } from 'common/api'
 import Loader from 'components/Loader'
 import Card from 'components/Card'
 import FAB from 'components/FAB'

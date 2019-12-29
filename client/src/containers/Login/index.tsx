@@ -2,9 +2,9 @@ import * as React from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import Form from 'components/Form'
 import Input from 'components/Input'
-import { SET_USER, SET_NOTIFICATION } from 'utils/actions'
-import { StateContext, DispatchContext } from 'utils/context'
-import { login } from 'utils/api'
+import { SET_USER, SET_NOTIFICATION } from 'common/actions'
+import { StateContext, DispatchContext } from 'common/context'
+import { login } from 'common/api'
 import { Login } from 'types'
 
 export default function LoginPage(props: RouteComponentProps): React.ReactElement {

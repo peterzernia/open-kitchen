@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { logout } from 'utils/api'
-import { CLEAR_USER } from 'utils/actions'
-import { DispatchContext, StateContext } from 'utils/context'
+import { logout } from 'common/api'
+import { CLEAR_USER } from 'common/actions'
+import { DispatchContext, StateContext } from 'common/context'
 
 export default function Logout(): React.ReactElement {
   const dispatch = React.useContext(DispatchContext)

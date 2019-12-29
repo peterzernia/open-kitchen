@@ -2,9 +2,9 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import Form from 'components/Form'
 import Input from 'components/Input'
-import { updateUser } from 'utils/api'
-import { SET_USER, SET_NOTIFICATION } from 'utils/actions'
-import { DispatchContext, StateContext } from 'utils/context'
+import { updateUser } from 'common/api'
+import { SET_USER, SET_NOTIFICATION } from 'common/actions'
+import { DispatchContext, StateContext } from 'common/context'
 import { User } from 'types'
 
 export default function Profile(props: RouteComponentProps): React.ReactElement {
