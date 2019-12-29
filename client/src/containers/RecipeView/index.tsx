@@ -56,16 +56,16 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
       <div className="recipeview-instructions">{recipe.instructions}</div>
       <div className="recipeview-notes">{recipe.notes}</div>
       <div className="recipeview-share">
-        <a href={`https://www.facebook/share.php?u=${process.env.REACT_APP_API_URL}/recipes/${slug}/view`}>
+        <a href={`https://www.facebook/share.php?u=https://openk1tchen.herokuapp.com/recipes/${slug}/view`}>
           <img height={16} src={Facebook} alt="facebook" />
         </a>
-        <a href={`https://pinterest.com/pin/create/button/?url=${process.env.REACT_APP_API_URL}/recipes/${slug}/view`}>
+        <a href={`https://pinterest.com/pin/create/button/?url=https://openk1tchen.herokuapp.com/recipes/${slug}/view`}>
           <img height={16} src={Pintrest} alt="pinterest" />
         </a>
-        <a href={`https://twitter.com/intent/tweet?text=${recipe.title} ${process.env.REACT_APP_API_URL}/recipes/${slug}/view`}>
+        <a href={`https://twitter.com/intent/tweet?text=${recipe.title} https://openk1tchen.herokuapp.com/recipes/${slug}/view`}>
           <img height={16} src={Twitter} alt="twitter" />
         </a>
-        <a href={`mailto:?Subject=${recipe.title}&body=Check out this recipe! ${process.env.REACT_APP_API_URL}/recipes/${slug}/view`}>
+        <a href={`mailto:?Subject=${recipe.title}&body=Check out this recipe! https://openk1tchen.herokuapp.com/recipes/${slug}/view`}>
           <img height={16} src={Email} alt="email" />
         </a>
       </div>
