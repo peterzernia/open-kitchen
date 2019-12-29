@@ -4,6 +4,7 @@ import Loader from 'components/Loader'
 import { searchRecipes } from 'common/api'
 import { useDebounce } from 'common/hooks'
 import Card from 'components/Card'
+import Grid from 'components/Grid'
 import './Search.css'
 
 export default function Search(): React.ReactElement {
@@ -51,7 +52,7 @@ export default function Search(): React.ReactElement {
         />
       </div>
       { loading && <Loader />}
-      <div>
+      <Grid>
         {
           recipes.map((recipe) => (
             <Card
@@ -61,7 +62,7 @@ export default function Search(): React.ReactElement {
             />
           ))
         }
-      </div>
+      </Grid>
     </div>
   )
 }

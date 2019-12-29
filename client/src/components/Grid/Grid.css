@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, auto);
+}
+
+@media screen and (max-width: 1215px) {
+  .grid {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .grid {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .grid {
+    grid-template-columns: repeat(1, auto);
+  }
+}

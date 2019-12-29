@@ -5,6 +5,7 @@ import Loader from 'components/Loader'
 import Card from 'components/Card'
 import FAB from 'components/FAB'
 import Button from 'components/Button'
+import Grid from 'components/Grid'
 import Settings from 'assets/settings.svg'
 import './RecipeBook.css'
 
@@ -42,7 +43,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
           <img src={Settings} alt="settings" />
         </Button>
       </div>
-      <div className="grid">
+      <Grid>
         {
           recipes.map((recipe) => (
             <Card
@@ -52,7 +53,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
             />
           ))
         }
-      </div>
+      </Grid>
       <FAB color="lightblue" onClick={(): void => history.push('/recipes/new')} />
     </div>
   )
