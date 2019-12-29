@@ -46,7 +46,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
         recipes.map((recipe) => (
           <Card
             key={recipe.slug}
-            title={`${recipe.title} - ${recipe.author && recipe.author.username}`}
+            title={recipe.title}
             body={recipe.description}
           />
         ))
