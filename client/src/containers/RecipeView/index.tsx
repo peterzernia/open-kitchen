@@ -14,6 +14,11 @@ type RouteParams = {
   slug: string;
 }
 
+type dangerousHTML = {
+  __html: string;
+}
+
+/* eslint react/no-danger: 0 */
 export default function RecipeView(props: RouteComponentProps<RouteParams>): React.ReactElement {
   const [recipe, setRecipe] = React.useState(null)
   const [loading, setLoading] = React.useState(true)
@@ -36,6 +41,8 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
     fetchData()
   }, [slug])
 
+  const createHTML = (text: string): dangerousHTML => ({ __html: text })
+
   if (loading) return <Loader />
 
   return (
@@ -52,8 +59,8 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
       <h1>{recipe.title}</h1>
       <h3>{recipe.author.username}</h3>
       <div className="recipeview-description">{recipe.description}</div>
-      <div className="recipeview-ingredients">{recipe.ingredients}</div>
-      <div className="recipeview-instructions">{recipe.instructions}</div>
+      <div className="recipeview-ingredients" dangerouslySetInnerHTML={createHTML(recipe.ingredients)} />
+      <div className="recipeview-instructions" dangerouslySetInnerHTML={createHTML(recipe.instructions)} />
       <div className="recipeview-notes">{recipe.notes}</div>
       <div className="recipeview-share">
         <a href={`https://www.facebook/share.php?u=https://openk1tchen.herokuapp.com/recipes/${slug}/view`}>
