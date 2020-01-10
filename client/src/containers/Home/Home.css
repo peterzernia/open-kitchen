@@ -1,7 +1,5 @@
 .header {
   box-sizing: border-box;
-  position: absolute;
-  top: 64px;
   background: url(../../assets/images/bg-masthead.jpg) no-repeat center center;
   background-size: cover;
   width: 100%;
