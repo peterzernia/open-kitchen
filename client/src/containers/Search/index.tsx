@@ -48,7 +48,7 @@ export default function Search(props: RouteComponentProps): React.ReactElement {
           label=""
           name=""
           type="text"
-          placeholder="Search"
+          placeholder="Search..."
           handleChange={handleChange}
           value={value}
         />

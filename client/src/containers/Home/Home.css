@@ -10,13 +10,13 @@
   font-size: 64px;
   color: white;
   text-align: center;
-  padding-top: 40vh;
+  padding-top: 35vh;
 }
 
 @media only screen and (max-width: 800px) {
   .header {
     height: 400px;
-    font-size: 48px;
+    font-size: 40px;
     padding-top: 150px;
   }
 }

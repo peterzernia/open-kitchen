@@ -6,6 +6,7 @@
   font-size: 14px;
   border: 1px solid rgb(216, 216, 216);
   margin: 0px 4px;
+  background-color: white;
 }
 
 .button:hover {

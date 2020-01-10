@@ -8,17 +8,17 @@ export default function Nav(): React.ReactElement {
 
   return (
     <nav>
-      <Link to="/">Home</Link>
+      <Link className="nav-tab" to="/">open kitchen.</Link>
       <div className="nav-right">
-        <Link to="/search">Search</Link>
+        <Link className="nav-tab" to="/search">Search</Link>
         {
           state.authenticated
-            && <Link to={`/recipes/${state.user.username}`}>Recipes</Link>
+            && <Link className="nav-tab" to={`/recipes/${state.user.username}`}>Recipes</Link>
         }
         {
           state.authenticated
-            ? <Link to="/logout">Logout</Link>
-            : <Link to="/login">Login</Link>
+            ? <Link className="nav-tab" to="/logout">Logout</Link>
+            : <Link className="nav-tab" to="/login">Login</Link>
         }
       </div>
     </nav>
