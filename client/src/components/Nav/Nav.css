@@ -1,5 +1,6 @@
 .nav-wrapper {
   margin-bottom: 32px;
+  z-index: 10000;
 }
 
 .nav {
@@ -43,5 +44,10 @@
 }
 
 .nav-bottom {
+  display: flex;
+  height: 100px;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
 }
