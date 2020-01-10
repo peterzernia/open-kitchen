@@ -1,9 +1,12 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { getRecipe } from 'common/api'
+import { getRecipe, deleteRecipe } from 'common/api'
 import Button from 'components/Button'
+import Modal from 'components/Modal'
 import Loader from 'components/Loader'
-import { StateContext } from 'common/context'
+import { SET_NOTIFICATION } from 'common/actions'
+import { StateContext, DispatchContext } from 'common/context'
+import Delete from 'assets/delete.svg'
 import Twitter from 'assets/twitter.svg'
 import Pintrest from 'assets/pinterest.svg'
 import Facebook from 'assets/facebook.svg'
@@ -21,10 +24,14 @@ type dangerousHTML = {
 /* eslint react/no-danger: 0 */
 export default function RecipeView(props: RouteComponentProps<RouteParams>): React.ReactElement {
   const [recipe, setRecipe] = React.useState(null)
+  const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
   const state = React.useContext(StateContext)
+  const dispatch = React.useContext(DispatchContext)
   const { history, match } = props
   const { slug } = match.params
+
+  const createHTML = (text: string): dangerousHTML => ({ __html: text })
 
   React.useEffect(() => {
     async function fetchData(): Promise<void> {
@@ -41,17 +48,49 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
     fetchData()
   }, [slug])
 
-  const createHTML = (text: string): dangerousHTML => ({ __html: text })
+  const handleDelete = async (): Promise<void> => {
+    try {
+      await deleteRecipe(slug, state.user.token)
+
+      history.push(`/recipes/${state.user.username}`)
+
+      dispatch({
+        type: SET_NOTIFICATION,
+        payload: {
+          type: 'success',
+          message: 'Successfully deleted recipe',
+        },
+      })
+    } catch (err) {
+      dispatch({
+        type: SET_NOTIFICATION,
+        payload: {
+          type: 'error',
+          message: 'Oops! Something went wrong',
+        },
+      })
+      setOpen(false)
+    }
+  }
 
   if (loading) return <Loader />
 
   return (
     <div className="recipeview">
+      <Modal
+        open={open}
+        text="Are you sure you want to delete this recipe?"
+        onOK={handleDelete}
+        onClose={(): void => setOpen(false)}
+      />
       {
         recipe.author.id === state.user.id && (
-          <div className="recipeview-edit">
+          <div className="recipeview-actions">
             <Button onClick={(): void => history.push(`/recipes/${slug}/edit`)}>
               Edit
+            </Button>
+            <Button onClick={(): void => setOpen(true)} icon>
+              <img src={Delete} alt="delete" />
             </Button>
           </div>
         )

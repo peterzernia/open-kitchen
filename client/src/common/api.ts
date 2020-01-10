@@ -29,3 +29,4 @@ export const getRecipe = (slug: string): Promise<Recipe> => api.get(`recipes/${s
 export const editRecipe = (recipe: Recipe, slug: string, token: string): Promise<Recipe> => withAuth(token).put(`recipes/${slug}`, { json: recipe }).json()
 export const searchRecipes = (q: string): Promise<Recipe[]> => api.get(`recipes?q=${q}`).json()
 export const getRecipesByUser = (username: string): Promise<Recipe[]> => api.get(`users/${username}/recipes`).json()
+export const deleteRecipe = (slug: string, token: string): void => withAuth(token).delete(`recipes/${slug}`)
