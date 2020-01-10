@@ -12,10 +12,16 @@ export default function Card(props: Props): React.ReactElement {
   const { title, body, onClick } = props
 
   return (
-    <div className="card">
-      <button className="card-title" type="button" onClick={onClick}>
+    <div
+      className="card"
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+    >
+      <div className="card-title">
         <h3>{title}</h3>
-      </button>
+      </div>
       <div className="card-body">{body}</div>
     </div>
   )

@@ -37,6 +37,10 @@
   margin: 0px 16px;
 }
 
+.nav-tab:focus {
+  outline: none;
+}
+
 .nav-right {
   display: flex;
   justify-content: space-between;
