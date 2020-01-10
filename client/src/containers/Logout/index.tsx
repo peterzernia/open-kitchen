@@ -3,6 +3,8 @@ import { logout } from 'common/api'
 import { CLEAR_USER } from 'common/actions'
 import { DispatchContext, StateContext } from 'common/context'
 
+import './Logout.css'
+
 export default function Logout(): React.ReactElement {
   const dispatch = React.useContext(DispatchContext)
   const state = React.useContext(StateContext)
@@ -26,6 +28,6 @@ export default function Logout(): React.ReactElement {
   }, [dispatch, state.authenticated, state.user.token])
 
   return (
-    <div>Logout success</div>
+    <div className="logout">Successfully logged out.</div>
   )
 }
