@@ -55,7 +55,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
           ))
         }
       </Grid>
-      <FAB color="lightblue" onClick={(): void => history.push('/recipes/new')} />
+      <FAB onClick={(): void => history.push('/recipes/new')} />
     </div>
   )
 }

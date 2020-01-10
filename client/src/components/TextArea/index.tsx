@@ -26,6 +26,7 @@ export default function TextArea(props: Props): React.ReactElement {
     <HTMLElement>
       <Label label={label} htmlFor="html-element" required={required} />
       <textarea
+        className="textarea"
         style={{
           resize,
         }}

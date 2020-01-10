@@ -1,5 +1,16 @@
-textarea {
+.textarea {
   box-sizing: border-box;
   width: 100%;
   min-height: 150px;
+  padding: 8px;
+
+  font-size: 14px;
+  font-family: "Libre Baskerville", serif;
+
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+}
+
+.textarea:focus {
+  outline: none;
 }

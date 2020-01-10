@@ -1,11 +1,16 @@
 .text-editor {
-  min-height: 150px;
+  min-height: 200px;
 }
 
 /* Allows text editor to focus if clicked anywhere in the box */
 .RichTextEditor__root___2QXK- {
   display: flex;
   flex-direction: column;
+
+  font-family: "Libre Baskerville", serif;
+
+  border: 1px solid #dddddd;
+  border-radius: 8px;
 }
 
 .RichTextEditor__editor___1QqIU,

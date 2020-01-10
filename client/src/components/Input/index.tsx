@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Label from 'components/Label'
 import HTMLElement from 'components/HTMLElement'
+
 import './Input.css'
 
 type Props = {
@@ -30,6 +31,7 @@ export default function Input(props: Props): React.ReactElement {
       <Label label={label} htmlFor="html-element" required={required} />
       <div className="input-container">
         <input
+          className="input"
           name={name}
           onChange={handleChange}
           placeholder={placeholder}
