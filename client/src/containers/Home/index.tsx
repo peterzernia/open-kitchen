@@ -1,16 +1,14 @@
 import * as React from 'react'
-import { StateContext } from 'common/context'
+
+import './Home.css'
 
 export default function Home(): React.ReactElement {
-  const state = React.useContext(StateContext)
 
   return (
     <div>
-      {
-        state.authenticated
-          ? `Welcome, ${state.user.username}`
-          : 'Home'
-      }
+      <header className="header">
+        Open Kitchen
+      </header>
     </div>
   )
 }

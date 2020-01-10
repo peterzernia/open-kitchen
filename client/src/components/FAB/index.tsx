@@ -1,5 +1,5 @@
 import * as React from 'react'
-import add from 'assets/add.svg'
+import add from 'assets/icons/add.svg'
 import { palette } from 'common/theme'
 import './FAB.css'
 

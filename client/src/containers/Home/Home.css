@@ -1,0 +1,22 @@
+.header {
+  box-sizing: border-box;
+  position: absolute;
+  top: 64px;
+  background: url(../../assets/images/bg-masthead.jpg) no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: calc(100vh - 64px);
+
+  font-size: 64px;
+  color: white;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+@media only screen and (max-width: 800px) {
+  .header {
+    height: 400px;
+    font-size: 48px;
+    padding-top: 150px;
+  }
+}

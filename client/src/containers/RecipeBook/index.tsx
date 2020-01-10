@@ -6,7 +6,7 @@ import Card from 'components/Card'
 import FAB from 'components/FAB'
 import Button from 'components/Button'
 import Grid from 'components/Grid'
-import Settings from 'assets/settings.svg'
+import Settings from 'assets/icons/settings.svg'
 import './RecipeBook.css'
 
 type RouteParams = {
