@@ -1,3 +1,7 @@
+.nav-wrapper {
+  margin-bottom: 32px;
+}
+
 .nav {
   box-sizing: border-box;
   position: absolute;

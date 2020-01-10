@@ -1,4 +1,7 @@
 .header {
+  position: absolute;
+  top: 64px;
+
   box-sizing: border-box;
   background: url(../../assets/images/bg-masthead.jpg) no-repeat center center;
   background-size: cover;

@@ -38,6 +38,7 @@ export default function RegisterPage(props: RouteComponentProps): React.ReactEle
 
   return (
     <Form
+      size="sm"
       title="Register"
       handleSubmit={handleSubmit}
       secondaryButton={secondaryButton}
