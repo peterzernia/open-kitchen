@@ -1,7 +1,6 @@
 package recipe
 
 import (
-	"html"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -39,12 +38,6 @@ func handleCreate(c *gin.Context) {
 	recipe.AuthorID = user.ID
 	recipe.Author = &user
 	recipe.Slug = &slug
-
-	// Escape user provided html
-	ingredients := html.EscapeString(*recipe.Ingredients)
-	instructions := html.EscapeString(*recipe.Instructions)
-	recipe.Ingredients = &ingredients
-	recipe.Instructions = &instructions
 
 	recipe, err = createRecipe(db, recipe)
 
@@ -98,12 +91,6 @@ func handleUpdate(c *gin.Context) {
 		})
 		return
 	}
-
-	// Escape user provided html
-	ingredients := html.EscapeString(*recipe.Ingredients)
-	instructions := html.EscapeString(*recipe.Instructions)
-	recipe.Ingredients = &ingredients
-	recipe.Instructions = &instructions
 
 	if err = db.Omit("id").Omit("created_at").Omit("author_id").Omit("slug").Save(&recipe).Error; err != nil {
 		c.Status(http.StatusInternalServerError)

@@ -1,6 +1,8 @@
 import * as React from 'react'
+import Button from 'components/Button'
 import { DispatchContext } from 'common/context'
 import { CLEAR_NOTIFICATION } from 'common/actions'
+import { palette } from 'common/theme'
 import { Notification as Notif } from 'types'
 import './Notification.css'
 
@@ -15,14 +17,17 @@ export default function Notification(props: Props): React.ReactElement {
   if (!notification.message && !notification.type) return null
 
   return (
-    <div className={`notification notification-${notification.type}`}>
+    <div
+      className={`notification notification-${notification.type}`}
+      style={{ backgroundColor: palette[notification.type] }}
+    >
       <div>{notification.message}</div>
-      <button
-        type="button"
+      <Button
+        icon
         onClick={(): void => { dispatch({ type: CLEAR_NOTIFICATION }) }}
       >
         X
-      </button>
+      </Button>
     </div>
   )
 }
