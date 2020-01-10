@@ -1,4 +1,6 @@
 import * as React from 'react'
+import Button from 'components/Button'
+
 import './Form.css'
 
 type Props = {
@@ -47,18 +49,21 @@ export default function Form(props: Props): React.ReactElement {
     <form className="mx">
       {inputs}
       <div className="form-buttons">
-        <button type="submit" onClick={handleSubmit}>
+        <Button
+          color="primary"
+          type="submit"
+          onClick={handleSubmit}
+        >
           Submit
-        </button>
+        </Button>
         {
           secondaryButton
             && (
-              <button
-                type="button"
+              <Button
                 onClick={secondaryButton.handleClick}
               >
                 {secondaryButton.label}
-              </button>
+              </Button>
             )
         }
       </div>

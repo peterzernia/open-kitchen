@@ -7,6 +7,17 @@
   margin: 8px 0px;
 }
 
+.card-title {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0px;
+}
+
+.card-title:focus {
+  outline: none;
+}
+
 .card-body {
   height: 100px;
   overflow: hidden;

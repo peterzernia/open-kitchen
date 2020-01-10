@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Button from 'components/Button'
 import './Card.css'
 
 type Props = {
@@ -14,9 +13,9 @@ export default function Card(props: Props): React.ReactElement {
 
   return (
     <div className="card">
-      <Button onClick={onClick} icon>
+      <button className="card-title" type="button" onClick={onClick}>
         <h3>{title}</h3>
-      </Button>
+      </button>
       <div className="card-body">{body}</div>
     </div>
   )

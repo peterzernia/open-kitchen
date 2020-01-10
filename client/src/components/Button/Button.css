@@ -1,5 +1,27 @@
+.button {
+  cursor: pointer;
+  width: 88px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid rgb(216, 216, 216);
+}
+
+.button:hover {
+  filter: brightness(95%);
+}
+
+.button:focus {
+  outline: none;
+}
+
 .icon-button {
   border: none;
-  cursor: pointer;
   background: none;
+  height: 40px;
+  width: 40px;
+}
+
+.icon-button:hover {
+  filter: none;
 }

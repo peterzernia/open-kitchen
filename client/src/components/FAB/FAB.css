@@ -12,3 +12,11 @@
   right: 24px;
   bottom: 24px;
 }
+
+.fab:focus {
+  outline: none;
+}
+
+.fab-icon {
+  filter: invert(100%);
+}
