@@ -1,11 +1,18 @@
-form {
-  max-width: 600px;
-  border: 1px solid black;
-  padding: 8px;
+.form {
+  padding: 16px 32px;
   border-radius: 8px;
+  background-color: white;
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.form-header {
+  text-align: center;
 }
 
 .form-buttons {
   display: flex;
   justify-content: center;
+  margin: 24px 0px 8px 0px;
 }

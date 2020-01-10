@@ -43,6 +43,8 @@ export default function LoginPage(props: RouteComponentProps): React.ReactElemen
 
   return (
     <Form
+      size="sm"
+      title="Login"
       handleSubmit={handleSubmit}
       secondaryButton={secondaryButton}
     >

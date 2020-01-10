@@ -29,6 +29,12 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
   // Indicates whether Route is create or edit recipe
   const isNew = !slug
 
+  const secondaryButton = {
+    label: 'Cancel',
+    handleClick: (): void => history.push(`/recipes/${state.user.username}`),
+  }
+
+
   React.useEffect(() => {
     async function fetchData(): Promise<void> {
       setLoading(true)
@@ -106,7 +112,12 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
   if (loading) return <Loader />
 
   return (
-    <Form handleSubmit={isNew ? handleCreate : handleEdit} initialValues={recipe}>
+    <Form
+      title={isNew ? 'New Recipe' : 'Edit Recipe'}
+      handleSubmit={isNew ? handleCreate : handleEdit}
+      initialValues={recipe}
+      secondaryButton={secondaryButton}
+    >
       <Input
         label="Title"
         name="title"

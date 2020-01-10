@@ -4,17 +4,26 @@ import Button from 'components/Button'
 import './Form.css'
 
 type Props = {
-    children: React.ReactElement[];
-    initialValues?: object;
-    handleSubmit: (values: object) => void;
-    secondaryButton?: {
-      label: string;
-      handleClick: () => void;
-    };
+  title: string;
+  size?: 'sm' | 'lg';
+  children: React.ReactElement[];
+  initialValues?: object;
+  handleSubmit: (values: object) => void;
+  secondaryButton?: {
+    label: string;
+    handleClick: () => void;
+  };
+}
+
+const SIZE = {
+  sm: 360,
+  lg: 600,
 }
 
 export default function Form(props: Props): React.ReactElement {
-  const { children, initialValues, secondaryButton } = props
+  const {
+    title, size, children, initialValues, secondaryButton,
+  } = props
 
   // Create initial values object with the names of the input
   // and initial values for each field if they exist
@@ -46,7 +55,10 @@ export default function Form(props: Props): React.ReactElement {
   }))
 
   return (
-    <form className="mx">
+    <form className="form mx" style={{ maxWidth: size ? SIZE[size] : SIZE.lg }}>
+      <div className="form-header">
+        <h1>{title}</h1>
+      </div>
       {inputs}
       <div className="form-buttons">
         <Button

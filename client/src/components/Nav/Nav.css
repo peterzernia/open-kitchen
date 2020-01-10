@@ -1,11 +1,16 @@
 nav {
-  height: 48px;
-  line-height: 48px;
-  margin-bottom: 8px;
+  height: 64px;
+  line-height: 64px;
+  margin-bottom: 24px;
+  padding: 0px 8px;
 
   display: flex;
   justify-content: space-between;
   align-content: center;
+
+  background-color: white;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .nav-right {

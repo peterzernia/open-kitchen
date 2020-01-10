@@ -46,6 +46,8 @@ export default function Profile(props: RouteComponentProps): React.ReactElement 
   return (
     <div>
       <Form
+        size="sm"
+        title="Settings"
         handleSubmit={handleSubmit}
         initialValues={initialValues}
         secondaryButton={secondaryButton}
