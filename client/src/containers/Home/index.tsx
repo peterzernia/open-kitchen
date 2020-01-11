@@ -53,7 +53,7 @@ export default function Home(): React.ReactElement {
           <img src={TestimonialThree} className="testimonial-img" alt="one" />
           <h3 className="testimonial-name">Sarah W.</h3>
           <p>
-            &quot;Sharing recipes hase never been so easy!.&quot;
+            &quot;Sharing recipes has never been so easy!&quot;
           </p>
         </div>
       </div>
