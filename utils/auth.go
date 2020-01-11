@@ -38,7 +38,7 @@ func ParseUserDBError(err error) string {
 	} else if strings.HasSuffix(err.Error(), "email_key\"") {
 		message = "A user registered with that email already exists"
 	} else {
-		message = "Oops! Error"
+		message = "Yike! Error"
 	}
 
 	return message

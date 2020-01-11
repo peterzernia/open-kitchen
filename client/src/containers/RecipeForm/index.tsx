@@ -46,7 +46,7 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
           type: SET_NOTIFICATION,
           payload: {
             type: 'error',
-            message: 'Oops! Error',
+            message: 'Yike! Error',
           },
         })
       } finally {
@@ -79,7 +79,7 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         type: SET_NOTIFICATION,
         payload: {
           type: 'error',
-          message: 'Oops! Error',
+          message: 'Yike! Error',
         },
       })
     }
@@ -103,7 +103,7 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         type: SET_NOTIFICATION,
         payload: {
           type: 'error',
-          message: 'Oops! Error',
+          message: 'Yike! Error',
         },
       })
     }
