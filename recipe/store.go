@@ -31,7 +31,8 @@ func getRecipesByQuery(db *gorm.DB, q string) ([]models.Recipe, error) {
 	err := db.Preload("Author").
 		Select("*").
 		Joins("LEFT JOIN users ON users.id = recipes.author_id").
-		Where("lower(recipes.title) LIKE ? OR lower(users.username) LIKE ?", query, query).
+		Where("lower(recipes.title) LIKE ? OR lower(users.username) LIKE ? OR lower(recipes.ingredients) LIKE ?", query, query, query).
+		Limit(25).
 		Find(&recipes).Error
 	return recipes, err
 }

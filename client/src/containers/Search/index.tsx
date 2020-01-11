@@ -44,11 +44,12 @@ export default function Search(props: RouteComponentProps): React.ReactElement {
   return (
     <div>
       <div className="search-bar mx">
+        <h1>Search for recipes</h1>
         <Input
           label=""
           name=""
           type="text"
-          placeholder="Search..."
+          placeholder="Enter a recipe, ingredient or author..."
           handleChange={handleChange}
           value={value}
         />

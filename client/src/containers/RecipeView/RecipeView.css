@@ -18,7 +18,7 @@
 }
 
 .recipeview-share {
-  margin: 96px auto;
+  margin: 96px auto 24px auto;
   width: 112px;
   display: flex;
   justify-content: space-between;
