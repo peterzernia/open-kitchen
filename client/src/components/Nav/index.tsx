@@ -25,7 +25,7 @@ export default function Nav(): React.ReactElement {
                   <Link className="nav-tab" to="/search">Search</Link>
                   {
                     state.authenticated
-                      && <Link className="nav-tab" to={`/recipes/${state.user.username}`}>Recipes</Link>
+                      && <Link className="nav-tab" to={`/recipes/${state.user.username}`}>My Recipes</Link>
                   }
                   {
                     state.authenticated
