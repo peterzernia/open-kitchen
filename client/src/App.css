@@ -6,5 +6,9 @@ body {
 }
 
 .mx {
-  margin: auto;
+  margin: 0px auto;
+}
+
+.my {
+  margin: auto 0px;
 }

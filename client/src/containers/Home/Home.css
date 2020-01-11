@@ -20,3 +20,50 @@
     font-size: 40px;
   }
 }
+
+.features {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+
+  text-align: center;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 275px;
+  height: 275px;
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  padding: 8px;
+}
+
+.feature-icon:hover {
+  width: 72px;
+  height: 72px;
+  padding: 4px;
+}
+
+.feature-title {
+  margin: 8px 0px 0px 0px;
+}
+
+@media only screen and (max-width: 900px) {
+  .features {
+    height: 125vh;
+    flex-direction: column;
+  }
+
+  .feature {
+    align-self: center;
+  }
+}
