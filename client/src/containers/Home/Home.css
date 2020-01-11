@@ -60,7 +60,7 @@
 
 @media only screen and (max-width: 900px) {
   .features {
-    height: 125vh;
+    height: 900px;
     flex-direction: column;
   }
 
@@ -93,7 +93,7 @@
 
 @media only screen and (max-width: 900px) {
   .testimonials {
-    height: 140vh;
+    height: 1200px;
     flex-direction: column;
   }
 
