@@ -7,6 +7,7 @@ import FAB from 'components/FAB'
 import Button from 'components/Button'
 import Grid from 'components/Grid'
 import Settings from 'assets/icons/settings.svg'
+import { StateContext } from 'common/context'
 import './RecipeBook.css'
 
 type RouteParams = {
@@ -16,6 +17,7 @@ type RouteParams = {
 export default function RecipeBook(props: RouteComponentProps<RouteParams>): React.ReactElement {
   const [recipes, setRecipes] = React.useState([])
   const [loading, setLoading] = React.useState(true)
+  const state = React.useContext(StateContext)
   const { history, match } = props
   const { username } = match.params
 
@@ -38,16 +40,20 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
 
   return (
     <div>
-      <div className="recipebook-settings">
-        <Button onClick={(): void => history.push('/profile')} icon>
-          <img src={Settings} alt="settings" />
-        </Button>
-      </div>
+      { username === state.user.username && (
+        <div className="recipebook-settings">
+          <Button onClick={(): void => history.push('/profile')} icon>
+            <img src={Settings} alt="settings" />
+          </Button>
+        </div>
+      )}
       {
         !recipes.length && (
           <div className="recipebook-no-recipes">
-            It looks like you don&lsquo;t have any recipes.
-            Click the &lsquo;+&lsquo; button to get started
+            {`It looks like 
+              ${username === state.user.username
+              ? "you don't"
+              : "this user doesn't"} have any recipes. Click the &lsquo;+&lsquo; button to get started`}
           </div>
         )
       }
@@ -63,7 +69,9 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
           ))
         }
       </Grid>
-      <FAB onClick={(): void => history.push('/recipes/new')} />
+      { username === state.user.username && (
+        <FAB onClick={(): void => history.push('/recipes/new')} />
+      )}
     </div>
   )
 }
