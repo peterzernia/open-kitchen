@@ -1,9 +1,9 @@
 import * as React from 'react'
-import Button from 'components/Button'
 import { DispatchContext } from 'common/context'
 import { CLEAR_NOTIFICATION } from 'common/actions'
 import { palette } from 'common/theme'
 import { Notification as Notif } from 'types'
+import Close from 'assets/icons/close.svg'
 import './Notification.css'
 
 type Props = {
@@ -13,21 +13,41 @@ type Props = {
 export default function Notification(props: Props): React.ReactElement {
   const dispatch = React.useContext(DispatchContext)
   const { notification } = props
+  const { type, message } = notification
 
-  if (!notification.message && !notification.type) return null
+  const secondaryColor = {
+    success: 'green',
+    error: '#d01919',
+  }
+
+  React.useEffect(() => {
+    // Clear notification after 3 seconds
+    setTimeout(() => {
+      if (message) {
+        dispatch({ type: CLEAR_NOTIFICATION })
+      }
+    }, 3000)
+  }, [message, dispatch])
+
+  if (!message && !type) return null
 
   return (
     <div
-      className={`notification notification-${notification.type}`}
-      style={{ backgroundColor: palette[notification.type] }}
+      className="notification"
+      style={{ backgroundColor: palette[type] }}
     >
-      <div>{notification.message}</div>
-      <Button
-        icon
+      <div
+        className="notification-sidebar"
+        style={{ backgroundColor: secondaryColor[type] }}
+      />
+      <div className="notification-message">{message}</div>
+      <button
+        className="notification-button"
+        type="button"
         onClick={(): void => { dispatch({ type: CLEAR_NOTIFICATION }) }}
       >
-        X
-      </Button>
+        <img src={Close} className="notification-icon" alt="close" />
+      </button>
     </div>
   )
 }

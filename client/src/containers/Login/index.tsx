@@ -33,7 +33,7 @@ export default function LoginPage(props: RouteComponentProps): React.ReactElemen
         type: SET_NOTIFICATION,
         payload: {
           type: 'error',
-          message: err.message,
+          message: 'Oops! Error',
         },
       })
     }

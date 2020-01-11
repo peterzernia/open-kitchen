@@ -37,7 +37,7 @@ export default function Profile(props: RouteComponentProps): React.ReactElement 
         type: SET_NOTIFICATION,
         payload: {
           type: 'error',
-          message: err.message,
+          message: 'Oops! Error',
         },
       })
     }

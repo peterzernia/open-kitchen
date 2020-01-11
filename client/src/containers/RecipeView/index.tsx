@@ -66,7 +66,7 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
         type: SET_NOTIFICATION,
         payload: {
           type: 'error',
-          message: 'Oops! Something went wrong',
+          message: 'Oops! Error',
         },
       })
       setOpen(false)

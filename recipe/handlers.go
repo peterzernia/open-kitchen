@@ -43,7 +43,7 @@ func handleCreate(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"message": "Oops! Something went wrong",
+			"message": "Oops! Error",
 		})
 		return
 	}

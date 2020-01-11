@@ -27,7 +27,7 @@ export default function RegisterPage(props: RouteComponentProps): React.ReactEle
       dispatch({
         type: SET_NOTIFICATION,
         payload: {
-          message: err.message,
+          message: 'Oops! Error',
           type: 'error',
         },
       })
