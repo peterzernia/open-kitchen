@@ -43,6 +43,14 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
           <img src={Settings} alt="settings" />
         </Button>
       </div>
+      {
+        !recipes.length && (
+          <div className="recipebook-no-recipes">
+            It looks like you don&lsquo;t have any recipes.
+            Click the &lsquo;+&lsquo; button to get started
+          </div>
+        )
+      }
       <Grid>
         {
           recipes.map((recipe) => (
