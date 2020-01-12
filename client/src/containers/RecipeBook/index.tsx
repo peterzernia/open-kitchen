@@ -40,12 +40,14 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
 
   return (
     <div>
-      { username === state.user.username && (
+      { username === state.user.username ? (
         <div className="recipebook-settings">
           <Button onClick={(): void => history.push('/profile')} icon>
             <img src={Settings} alt="settings" />
           </Button>
         </div>
+      ) : (
+        <h1 className="recipebook-header">{`Recipes by ${username}`}</h1>
       )}
       {
         !recipes.length && (

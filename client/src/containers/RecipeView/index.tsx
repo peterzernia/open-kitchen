@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 import { getRecipe, deleteRecipe } from 'common/api'
 import Button from 'components/Button'
 import Modal from 'components/Modal'
@@ -96,7 +96,7 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
         )
       }
       <h1>{recipe.title}</h1>
-      <h3>{recipe.author.username}</h3>
+      <h3><Link to={`/recipes/${recipe.author.username}`}>{recipe.author.username}</Link></h3>
       <div className="recipeview-description">{recipe.description}</div>
       <div className="recipeview-ingredients" dangerouslySetInnerHTML={createHTML(recipe.ingredients)} />
       <div className="recipeview-instructions" dangerouslySetInnerHTML={createHTML(recipe.instructions)} />

@@ -5,6 +5,11 @@ body {
   margin: 0px 0px 16px 0px;
 }
 
+a {
+  color: #2185d0;
+  text-decoration: none;
+}
+
 .mx {
   margin: 0px auto;
 }
