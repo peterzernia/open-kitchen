@@ -7,6 +7,7 @@ import Loader from 'components/Loader'
 import { SET_NOTIFICATION } from 'common/actions'
 import { StateContext, DispatchContext } from 'common/context'
 import Delete from 'assets/icons/delete.svg'
+import Edit from 'assets/icons/edit.svg'
 import Twitter from 'assets/icons/twitter.svg'
 import Pintrest from 'assets/icons/pinterest.svg'
 import Facebook from 'assets/icons/facebook.svg'
@@ -86,8 +87,8 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
       {
         recipe.author.id === state.user.id && (
           <div className="recipeview-actions">
-            <Button onClick={(): void => history.push(`/recipes/${slug}/edit`)}>
-              Edit
+            <Button onClick={(): void => history.push(`/recipes/${slug}/edit`)} icon>
+              <img src={Edit} alt="edit" />
             </Button>
             <Button onClick={(): void => setOpen(true)} icon>
               <img src={Delete} alt="delete" />

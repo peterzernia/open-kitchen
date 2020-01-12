@@ -6,7 +6,6 @@
 .recipeview-actions {
   display: flex;
   justify-content: flex-end;
-  padding-right: 24px;
 }
 
 .recipeview-description,
