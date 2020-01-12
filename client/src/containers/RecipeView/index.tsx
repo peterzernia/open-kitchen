@@ -96,8 +96,10 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
           </div>
         )
       }
-      <h1>{recipe.title}</h1>
-      <h3><Link to={`/recipes/${recipe.author.username}`}>{recipe.author.username}</Link></h3>
+      <div className="recipeview-title">
+        <h1>{recipe.title}</h1>
+        <h3><Link to={`/recipes/${recipe.author.username}`}>{recipe.author.username}</Link></h3>
+      </div>
       <div className="recipeview-description">{recipe.description}</div>
       <div className="recipeview-ingredients" dangerouslySetInnerHTML={createHTML(recipe.ingredients)} />
       <div className="recipeview-instructions" dangerouslySetInnerHTML={createHTML(recipe.instructions)} />

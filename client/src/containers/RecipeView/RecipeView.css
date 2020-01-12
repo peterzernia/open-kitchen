@@ -3,6 +3,10 @@
   padding: 16px;
 }
 
+.recipeview-title {
+  padding-bottom: 16px;
+}
+
 .recipeview-actions {
   display: flex;
   justify-content: flex-end;
