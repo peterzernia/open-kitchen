@@ -24,7 +24,7 @@ export default function Modal(props: Props): React.ReactElement {
           {text}
         </div>
         <div className="modal-actions">
-          <Button onClick={onOK}>
+          <Button color="primary" onClick={onOK}>
             OK
           </Button>
           <Button onClick={onClose}>
