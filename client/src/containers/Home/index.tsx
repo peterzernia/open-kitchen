@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Save from 'assets/icons/save.svg'
+import MenuBook from 'assets/icons/menu_book.svg'
 import SmartPhone from 'assets/icons/smartphone.svg'
 import Share from 'assets/icons/share.svg'
 import TestimonialOne from 'assets/images/testimonial-1.jpg'
@@ -17,8 +17,8 @@ export default function Home(): React.ReactElement {
 
       <div className="features">
         <div className="feature my">
-          <img src={Save} className="feature-icon mx" alt="save" />
-          <h1 className="feature-title">Save</h1>
+          <img src={MenuBook} className="feature-icon mx" alt="menu-book" />
+          <h1 className="feature-title">Store</h1>
           <h3>All of your recipes in one location!</h3>
         </div>
         <div className="feature my">
