@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import Form from 'components/Form'
 import Input from 'components/Input'
-import { SET_USER, SET_NOTIFICATION } from 'common/actions'
+import { setUser, setNotification } from 'common/actions'
 import { StateContext, DispatchContext } from 'common/context'
 import { login } from 'common/api'
 import { Login } from 'types'
@@ -18,10 +18,7 @@ export default function LoginPage(props: RouteComponentProps): React.ReactElemen
     try {
       const res = await login(payload)
 
-      dispatch({
-        type: SET_USER,
-        payload: res,
-      })
+      dispatch(setUser(res))
 
       if (location.state) {
         history.push(location.state.from.pathname)
@@ -29,13 +26,10 @@ export default function LoginPage(props: RouteComponentProps): React.ReactElemen
         history.push('/')
       }
     } catch (err) {
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'error',
-          message: 'Yike! Error',
-        },
-      })
+      dispatch(setNotification({
+        type: 'error',
+        message: 'Yike! Error',
+      }))
     }
   }
 

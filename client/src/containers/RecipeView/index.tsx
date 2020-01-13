@@ -4,7 +4,7 @@ import { getRecipe, deleteRecipe } from 'common/api'
 import Button from 'components/Button'
 import Modal from 'components/Modal'
 import Loader from 'components/Loader'
-import { SET_NOTIFICATION } from 'common/actions'
+import { setNotification } from 'common/actions'
 import { StateContext, DispatchContext } from 'common/context'
 import Delete from 'assets/icons/delete.svg'
 import Edit from 'assets/icons/edit.svg'
@@ -55,21 +55,15 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
 
       history.push(`/recipes/${state.user.username}`)
 
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'success',
-          message: 'Successfully deleted recipe',
-        },
-      })
+      dispatch(setNotification({
+        type: 'success',
+        message: 'Successfully deleted',
+      }))
     } catch (err) {
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'error',
-          message: 'Yike! Error',
-        },
-      })
+      dispatch(setNotification({
+        type: 'error',
+        message: 'Yike! Error',
+      }))
       setOpen(false)
     }
   }

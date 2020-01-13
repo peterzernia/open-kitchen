@@ -10,7 +10,7 @@ import {
   getRecipe,
 } from 'common/api'
 import { Recipe } from 'types'
-import { SET_NOTIFICATION } from 'common/actions'
+import { setNotification } from 'common/actions'
 import { StateContext, DispatchContext } from 'common/context'
 import Loader from 'components/Loader'
 
@@ -42,13 +42,10 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
         const res = await getRecipe(slug)
         setRecipe(res)
       } catch {
-        dispatch({
-          type: SET_NOTIFICATION,
-          payload: {
-            type: 'error',
-            message: 'Yike! Error',
-          },
-        })
+        dispatch(setNotification({
+          type: 'error',
+          message: 'Yike! Error',
+        }))
       } finally {
         setLoading(false)
       }
@@ -65,23 +62,17 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
     try {
       await createRecipe(payload, state.user.token)
 
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'success',
-          message: 'Successfully created',
-        },
-      })
+      dispatch(setNotification({
+        type: 'success',
+        message: 'Successfully created',
+      }))
 
       history.push(`/recipes/${state.user.username}`)
     } catch (err) {
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'error',
-          message: 'Yike! Error',
-        },
-      })
+      dispatch(setNotification({
+        type: 'error',
+        message: 'Yike! Error',
+      }))
     }
   }
 
@@ -89,23 +80,17 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
     try {
       await editRecipe(payload, slug, state.user.token)
 
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'success',
-          message: 'Successfully edited',
-        },
-      })
+      dispatch(setNotification({
+        type: 'success',
+        message: 'Successfully edited',
+      }))
 
       history.push(`/recipes/${slug}/view`)
     } catch (err) {
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'error',
-          message: 'Yike! Error',
-        },
-      })
+      dispatch(setNotification({
+        type: 'error',
+        message: 'Yike! Error',
+      }))
     }
   }
 

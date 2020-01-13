@@ -4,13 +4,21 @@ import {
   SET_NOTIFICATION,
   CLEAR_NOTIFICATION,
   RESET,
+  setUser,
+  clearUser,
+  setNotification,
+  clearNotification,
+  reset,
 } from 'common/actions'
 import { User, Notification } from 'types'
 
-type Action = {
-  type: string;
-  payload?: any;
-}
+type Action = ReturnType<
+  typeof setUser |
+  typeof clearUser |
+  typeof setNotification |
+  typeof clearNotification |
+  typeof reset
+>
 
 type State = {
   user: User;
@@ -18,11 +26,16 @@ type State = {
   notification: Notification;
 }
 
-export const initialState = {
-  user: {} as User,
+export const initialState: State = {
+  user: {
+    username: '',
+    email: '',
+  },
   authenticated: false,
-  notification: {} as Notification,
-
+  notification: {
+    type: '',
+    message: '',
+  },
 }
 
 export const reducer = (state: State, action: Action): State => {

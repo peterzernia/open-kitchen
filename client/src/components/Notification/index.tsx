@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { DispatchContext } from 'common/context'
-import { CLEAR_NOTIFICATION } from 'common/actions'
+import { clearNotification } from 'common/actions'
 import { palette } from 'common/theme'
 import { Notification as Notif } from 'types'
 import Close from 'assets/icons/close.svg'
@@ -24,7 +24,7 @@ export default function Notification(props: Props): React.ReactElement {
     // Clear notification after 3 seconds
     setTimeout(() => {
       if (message) {
-        dispatch({ type: CLEAR_NOTIFICATION })
+        dispatch(clearNotification())
       }
     }, 3000)
   }, [message, dispatch])
@@ -44,7 +44,7 @@ export default function Notification(props: Props): React.ReactElement {
       <button
         className="notification-button"
         type="button"
-        onClick={(): void => { dispatch({ type: CLEAR_NOTIFICATION }) }}
+        onClick={(): void => { dispatch(clearNotification()) }}
       >
         <img src={Close} className="notification-icon" alt="close" />
       </button>

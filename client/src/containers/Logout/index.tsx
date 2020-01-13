@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { logout } from 'common/api'
-import { CLEAR_USER } from 'common/actions'
+import { clearUser } from 'common/actions'
 import { DispatchContext, StateContext } from 'common/context'
 
 import './Logout.css'
@@ -22,9 +22,7 @@ export default function Logout(): React.ReactElement {
       authLogout()
     }
 
-    dispatch({
-      type: CLEAR_USER,
-    })
+    dispatch(clearUser())
   }, [dispatch, state.authenticated, state.user.token])
 
   return (

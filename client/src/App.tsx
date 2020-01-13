@@ -2,7 +2,7 @@ import * as React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { StateContext, DispatchContext } from 'common/context'
 import { reducer, initialState } from 'common/reducer'
-import { SET_USER } from 'common/actions'
+import { setUser } from 'common/actions'
 import PrivateRoute from 'components/PrivateRoute'
 import Nav from 'components/Nav'
 import Notification from 'components/Notification'
@@ -27,10 +27,7 @@ export default function App(): React.ReactElement {
     const user = JSON.parse(localStorage.getItem('user'))
 
     if (user) {
-      dispatch({
-        type: SET_USER,
-        payload: user,
-      })
+      dispatch(setUser(user))
     }
     setLoading(false)
   }, [])

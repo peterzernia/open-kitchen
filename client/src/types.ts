@@ -13,6 +13,7 @@ export type Register = {
 export type User = {
   username: string;
   email: string;
+  token?: string;
 }
 
 export type Recipe = {
@@ -25,6 +26,6 @@ export type Recipe = {
 }
 
 export type Notification = {
-  type: 'error' | 'success';
+  type: 'error' | 'success' | '';
   message: string;
 }

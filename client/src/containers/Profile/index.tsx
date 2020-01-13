@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import Form from 'components/Form'
 import Input from 'components/Input'
 import { updateUser } from 'common/api'
-import { SET_USER, SET_NOTIFICATION } from 'common/actions'
+import { setUser, setNotification } from 'common/actions'
 import { DispatchContext, StateContext } from 'common/context'
 import { User } from 'types'
 
@@ -18,28 +18,19 @@ export default function Profile(props: RouteComponentProps): React.ReactElement 
     try {
       const res = await updateUser(payload, state.user.token)
 
-      dispatch({
-        type: SET_USER,
-        payload: { ...res, token: state.user.token },
-      })
+      dispatch(setUser({ ...res, token: state.user.token }))
 
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'success',
-          message: 'Successfully updated your profile',
-        },
-      })
+      dispatch(setNotification({
+        type: 'success',
+        message: 'Successfully updated your profile',
+      }))
 
       history.push(`/recipes/${res.username}`)
     } catch (err) {
-      dispatch({
-        type: SET_NOTIFICATION,
-        payload: {
-          type: 'error',
-          message: 'Yike! Error',
-        },
-      })
+      dispatch(setNotification({
+        type: 'error',
+        message: 'Yike! Error',
+      }))
     }
   }
 
