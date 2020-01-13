@@ -10,12 +10,18 @@ type Props = {
   notification: Notif;
 }
 
+type SecondaryColor = {
+  [key: string]: string;
+  success: string;
+  error: string;
+}
+
 export default function Notification(props: Props): React.ReactElement {
   const dispatch = React.useContext(DispatchContext)
   const { notification } = props
   const { type, message } = notification
 
-  const secondaryColor = {
+  const secondaryColor: SecondaryColor = {
     success: 'green',
     error: '#d01919',
   }

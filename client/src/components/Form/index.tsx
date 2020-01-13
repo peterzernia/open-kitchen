@@ -7,7 +7,9 @@ type Props = {
   title: string;
   size?: 'sm' | 'lg';
   children: React.ReactElement[];
-  initialValues?: object;
+  initialValues?: {
+    [key: string]: any; // eslint-disable-line
+  };
   handleSubmit: (values: object) => void;
   secondaryButton?: {
     label: string;

@@ -26,6 +26,6 @@ export type Recipe = {
 }
 
 export type Notification = {
-  type: 'error' | 'success' | '';
+  type: string;
   message: string;
 }
