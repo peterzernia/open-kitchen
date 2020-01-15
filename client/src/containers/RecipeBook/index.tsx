@@ -55,7 +55,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
             {`It looks like 
               ${username === state.user.username
               ? "you don't"
-              : "this user doesn't"} have any recipes. Click the &lsquo;+&lsquo; button to get started`}
+              : "this user doesn't"} have any recipes. ${username === state.user.username ? 'Click the "+" button to get started.' : ''}`}
           </div>
         )
       }
