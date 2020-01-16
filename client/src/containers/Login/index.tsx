@@ -7,7 +7,7 @@ import { StateContext, DispatchContext } from 'common/context'
 import { login } from 'common/api'
 import { Login } from 'types'
 
-export default function LoginPage(props: RouteComponentProps<any>): React.ReactElement {
+export default function LoginPage(props: RouteComponentProps): React.ReactElement {
   const { history } = props
   const { location } = history
   const state = React.useContext(StateContext)
