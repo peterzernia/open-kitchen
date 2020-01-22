@@ -15,7 +15,7 @@ export default function Nav(): React.ReactElement {
 
   return (
     <div className="nav-wrapper">
-      <nav className="nav" style={{ height: isSmall && open && 164 }}>
+      <nav className="nav" style={{ height: (isSmall && open) ? 164 : 64 }}>
         <div className="nav-top">
           <Link className="nav-tab" to="/">open kitchen.</Link>
           {
