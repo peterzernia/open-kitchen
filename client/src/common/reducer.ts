@@ -4,27 +4,8 @@ import {
   SET_NOTIFICATION,
   CLEAR_NOTIFICATION,
   RESET,
-  setUser,
-  clearUser,
-  setNotification,
-  clearNotification,
-  reset,
 } from 'common/actions'
-import { User, Notification } from 'types'
-
-type Action = ReturnType<
-  typeof setUser |
-  typeof clearUser |
-  typeof setNotification |
-  typeof clearNotification |
-  typeof reset
->
-
-type State = {
-  user: User;
-  authenticated: boolean;
-  notification: Notification;
-}
+import { State, Action } from 'types'
 
 export const initialState: State = {
   user: {

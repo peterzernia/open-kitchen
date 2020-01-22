@@ -1,3 +1,25 @@
+import {
+  setUser,
+  clearUser,
+  setNotification,
+  clearNotification,
+  reset,
+} from 'common/actions'
+
+export type State = {
+  user: User;
+  authenticated: boolean;
+  notification: Notification;
+}
+
+export type Action = ReturnType<
+  typeof setUser |
+  typeof clearUser |
+  typeof setNotification |
+  typeof clearNotification |
+  typeof reset
+>
+
 export type Login = {
   username: string;
   password: string;
