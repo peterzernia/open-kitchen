@@ -15,7 +15,7 @@ import { StateContext, DispatchContext } from 'common/context'
 import Loader from 'components/Loader'
 
 type RouteParams = {
-  slug: string;
+  slug?: string;
 }
 
 // RecipeForm is used for both create and edit recipe routes
@@ -39,8 +39,10 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
     async function fetchData(): Promise<void> {
       setLoading(true)
       try {
-        const res = await getRecipe(slug)
-        setRecipe(res)
+        if (slug) {
+          const res = await getRecipe(slug)
+          setRecipe(res)
+        }
       } catch {
         dispatch(setNotification({
           type: 'error',
@@ -78,14 +80,16 @@ export default function RecipeForm(props: RouteComponentProps<RouteParams>): Rea
 
   const handleEdit = async (payload: Recipe): Promise<void> => {
     try {
-      await editRecipe(payload, slug, state.user.token)
+      if (slug) {
+        await editRecipe(payload, slug, state.user.token)
 
-      dispatch(setNotification({
-        type: 'success',
-        message: 'Successfully edited',
-      }))
+        dispatch(setNotification({
+          type: 'success',
+          message: 'Successfully edited',
+        }))
 
-      history.push(`/recipes/${slug}/view`)
+        history.push(`/recipes/${slug}/view`)
+      }
     } catch (err) {
       dispatch(setNotification({
         type: 'error',

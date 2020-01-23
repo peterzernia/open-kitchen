@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom'
+import { Recipe } from 'types'
 import { getRecipe, deleteRecipe } from 'common/api'
+import { setNotification } from 'common/actions'
+import { StateContext, DispatchContext } from 'common/context'
 import Button from 'components/Button'
 import Modal from 'components/Modal'
 import Loader from 'components/Loader'
-import { setNotification } from 'common/actions'
-import { StateContext, DispatchContext } from 'common/context'
 import Delete from 'assets/icons/delete.svg'
 import Edit from 'assets/icons/edit.svg'
 import Twitter from 'assets/icons/twitter.svg'
@@ -24,7 +25,7 @@ type dangerousHTML = {
 
 /* eslint react/no-danger: 0 */
 export default function RecipeView(props: RouteComponentProps<RouteParams>): React.ReactElement {
-  const [recipe, setRecipe] = React.useState(null)
+  const [recipe, setRecipe] = React.useState({} as Recipe)
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
   const state = React.useContext(StateContext)

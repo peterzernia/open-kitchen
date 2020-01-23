@@ -35,25 +35,29 @@ export default function Notification(props: Props): React.ReactElement {
     }, 3000)
   }, [message, dispatch])
 
-  if (!message && !type) return null
-
   return (
-    <div
-      className="notification"
-      style={{ backgroundColor: palette[type] }}
-    >
-      <div
-        className="notification-sidebar"
-        style={{ backgroundColor: secondaryColor[type] }}
-      />
-      <div className="notification-message">{message}</div>
-      <button
-        className="notification-button"
-        type="button"
-        onClick={(): void => { dispatch(clearNotification()) }}
-      >
-        <img src={Close} className="notification-icon" alt="close" />
-      </button>
-    </div>
+    <>
+      {
+        (message && type) && (
+          <div
+            className="notification"
+            style={{ backgroundColor: palette[type] }}
+          >
+            <div
+              className="notification-sidebar"
+              style={{ backgroundColor: secondaryColor[type] }}
+            />
+            <div className="notification-message">{message}</div>
+            <button
+              className="notification-button"
+              type="button"
+              onClick={(): void => { dispatch(clearNotification()) }}
+            >
+              <img src={Close} className="notification-icon" alt="close" />
+            </button>
+          </div>
+        )
+      }
+    </>
   )
 }

@@ -8,9 +8,11 @@ type Props = {
   size?: 'sm' | 'lg';
   children: React.ReactElement[];
   initialValues?: {
-    [key: string]: any; // eslint-disable-line
+    // eslint-disable-next-line
+    [key: string]: any;
   };
-  handleSubmit: (values: object) => void;
+  // eslint-disable-next-line
+  handleSubmit: (values: any) => Promise<void>;
   secondaryButton?: {
     label: string;
     handleClick: () => void;
@@ -43,7 +45,7 @@ export default function Form(props: Props): React.ReactElement {
   }
 
   const handleSubmit = (e: React.MouseEvent<HTMLInputElement>): void => {
-    if (e.currentTarget.form.checkValidity()) {
+    if (e.currentTarget.form && e.currentTarget.form.checkValidity()) {
       e.preventDefault()
       props.handleSubmit(values)
     }

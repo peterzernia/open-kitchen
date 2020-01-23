@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {
   htmlFor: string;
-  required: boolean;
+  required?: boolean;
   label: string;
 }
 

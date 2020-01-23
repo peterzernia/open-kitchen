@@ -24,36 +24,42 @@ export default function App(): React.ReactElement {
 
   React.useEffect(() => {
     setLoading(true)
-    const user = JSON.parse(localStorage.getItem('user'))
+    const s = localStorage.getItem('user')
 
-    if (user) {
+    if (s) {
+      const user = JSON.parse(s)
       dispatch(setUser(user))
     }
     setLoading(false)
   }, [])
 
-  if (loading) return null
   return (
-    <DispatchContext.Provider value={dispatch}>
-      <StateContext.Provider value={state}>
-        <Router>
-          <Nav />
-          <Notification notification={state.notification} />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/logout" component={Logout} />
-            <PrivateRoute path="/profile" component={Profile} authenticated={state.authenticated} />
-            <PrivateRoute path="/recipes/new" component={RecipeForm} authenticated={state.authenticated} />
-            <PrivateRoute path="/recipes/:slug/edit" component={RecipeForm} authenticated={state.authenticated} />
-            <Route path="/recipes/:slug/view" component={RecipeView} />
-            <Route path="/recipes/:username" component={RecipeBook} />
-            <Route path="/register" component={Register} />
-            <Route path="/search" component={Search} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </Router>
-      </StateContext.Provider>
-    </DispatchContext.Provider>
+    <>
+      {
+        !loading && (
+          <DispatchContext.Provider value={dispatch}>
+            <StateContext.Provider value={state}>
+              <Router>
+                <Nav />
+                <Notification notification={state.notification} />
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/logout" component={Logout} />
+                  <PrivateRoute path="/profile" component={Profile} authenticated={state.authenticated} />
+                  <PrivateRoute path="/recipes/new" component={RecipeForm} authenticated={state.authenticated} />
+                  <PrivateRoute path="/recipes/:slug/edit" component={RecipeForm} authenticated={state.authenticated} />
+                  <Route path="/recipes/:slug/view" component={RecipeView} />
+                  <Route path="/recipes/:username" component={RecipeBook} />
+                  <Route path="/register" component={Register} />
+                  <Route path="/search" component={Search} />
+                  <Route component={PageNotFound} />
+                </Switch>
+              </Router>
+            </StateContext.Provider>
+          </DispatchContext.Provider>
+        )
+      }
+    </>
   )
 }

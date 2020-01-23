@@ -1,23 +1,16 @@
 import {
-  SET_USER,
-  CLEAR_USER,
-  SET_NOTIFICATION,
-  CLEAR_NOTIFICATION,
-  RESET,
+  State, Action, User, Notification,
+} from 'types'
+import {
+  SET_USER, CLEAR_USER, SET_NOTIFICATION, CLEAR_NOTIFICATION, RESET,
 } from 'common/actions'
-import { State, Action } from 'types'
 
 export const initialState: State = {
-  user: {
-    username: '',
-    email: '',
-  },
+  user: {} as User,
   authenticated: false,
-  notification: {
-    type: '',
-    message: '',
-  },
-}
+  notification: {} as Notification,
+} as const
+
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {

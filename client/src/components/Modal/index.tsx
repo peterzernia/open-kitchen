@@ -15,23 +15,27 @@ export default function Modal(props: Props): React.ReactElement {
     open, text, onOK, onClose,
   } = props
 
-  if (!open) return null
-
   return (
-    <div className="modal-background">
-      <div className="modal">
-        <div className="modal-text">
-          {text}
-        </div>
-        <div className="modal-actions">
-          <Button color="primary" onClick={onOK}>
-            OK
-          </Button>
-          <Button color="secondary" onClick={onClose}>
-            Close
-          </Button>
-        </div>
-      </div>
-    </div>
+    <>
+      {
+        open && (
+          <div className="modal-background">
+            <div className="modal">
+              <div className="modal-text">
+                {text}
+              </div>
+              <div className="modal-actions">
+                <Button color="primary" onClick={onOK}>
+                  OK
+                </Button>
+                <Button color="secondary" onClick={onClose}>
+                  Close
+                </Button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </>
   )
 }

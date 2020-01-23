@@ -33,15 +33,22 @@ export type Register = {
 }
 
 export type User = {
-  id?: number;
+  id: number;
   username: string;
   email: string;
-  token?: string;
+  token: string;
+}
+
+// Used in the update user form/api call
+export type UpdateUser = {
+  username: string;
+  email: string;
 }
 
 export type Recipe = {
   title: string;
-  descriptions: string;
+  author: User;
+  description: string;
   ingredients: string;
   instructions: string;
   notes: string;

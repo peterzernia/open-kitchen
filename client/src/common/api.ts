@@ -3,6 +3,7 @@ import {
   Login,
   Register,
   User,
+  UpdateUser,
   Recipe,
 } from 'types'
 
@@ -21,7 +22,7 @@ const withAuth = (token: string): any => api.extend({
 export const login = (credentials: Login): Promise<User> => api.post('auth/login', { json: credentials }).json()
 export const logout = (token: string): Promise<void> => withAuth(token).post('auth/logout').json()
 export const register = (credentials: Register): Promise<User> => api.post('auth/register', { json: credentials }).json()
-export const updateUser = (user: User, token: string): Promise<User> => withAuth(token).put('auth/user', { json: user }).json()
+export const updateUser = (user: UpdateUser, token: string): Promise<User> => withAuth(token).put('auth/user', { json: user }).json()
 
 // Recipe endpoints
 export const createRecipe = (recipe: Recipe, token: string): Promise<Recipe> => withAuth(token).post('recipes', { json: recipe }).json()

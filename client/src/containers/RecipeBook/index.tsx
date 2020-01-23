@@ -1,13 +1,14 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
+import { Recipe } from 'types'
 import { getRecipesByUser } from 'common/api'
+import { StateContext } from 'common/context'
 import Loader from 'components/Loader'
 import Card from 'components/Card'
 import FAB from 'components/FAB'
 import Button from 'components/Button'
 import Grid from 'components/Grid'
 import Settings from 'assets/icons/settings.svg'
-import { StateContext } from 'common/context'
 import './RecipeBook.css'
 
 type RouteParams = {
@@ -15,7 +16,7 @@ type RouteParams = {
 }
 
 export default function RecipeBook(props: RouteComponentProps<RouteParams>): React.ReactElement {
-  const [recipes, setRecipes] = React.useState([])
+  const [recipes, setRecipes] = React.useState([] as Recipe[])
   const [loading, setLoading] = React.useState(true)
   const state = React.useContext(StateContext)
   const { history, match } = props

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Recipe } from 'types'
 import { RouteComponentProps } from 'react-router-dom'
 import Input from 'components/Input'
 import Loader from 'components/Loader'
@@ -12,7 +13,7 @@ export default function Search(props: RouteComponentProps): React.ReactElement {
   const { history } = props
   const [value, setValue] = React.useState('')
   const [loading, setLoading] = React.useState(false)
-  const [recipes, setRecipes] = React.useState([])
+  const [recipes, setRecipes] = React.useState([] as Recipe[])
 
   const debounced = useDebounce(value, 500)
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import RichTextEditor, { createValueFromString, createEmptyValue } from 'react-rte'
 import Label from 'components/Label'
-import Element from 'components/HTMLElement'
+import HTMLElement from 'components/HTMLElement'
 import './TextEditor.css'
 
 type Props = {
@@ -45,31 +45,34 @@ export default function TextEditor(props: Props): React.ReactElement {
       : createEmptyValue(),
   )
 
-  const ref = React.useRef(null)
+  // eslint-disable-next-line
+  const ref = React.useRef<any>(null)
 
   const onChange = (v: string): void => {
-    setEditorValue(v)
+    if (handleChange) {
+      setEditorValue(v)
 
-    // Reset form state when field is 'blank'
-    if (editorValue.toString('html') === '<p><br></p>') {
-      handleChange({
-        currentTarget: {
-          name,
-          value: '',
-        },
-      })
-    } else {
-      handleChange({
-        currentTarget: {
-          name,
-          value: editorValue.toString('html'),
-        },
-      })
+      // Reset form state when field is 'blank'
+      if (editorValue.toString('html') === '<p><br></p>') {
+        handleChange({
+          currentTarget: {
+            name,
+            value: '',
+          },
+        })
+      } else {
+        handleChange({
+          currentTarget: {
+            name,
+            value: editorValue.toString('html'),
+          },
+        })
+      }
     }
   }
 
   return (
-    <Element>
+    <HTMLElement>
       <Label label={label} htmlFor="html-element" required={required} />
       <RichTextEditor
         className="text-editor"
@@ -79,8 +82,8 @@ export default function TextEditor(props: Props): React.ReactElement {
         ref={ref}
       />
       {
-        // Shows native validation message
-        required && (
+        // Show native validation message
+        required ? (
           <input
             style={{
               opacity: 0,
@@ -92,10 +95,11 @@ export default function TextEditor(props: Props): React.ReactElement {
             value={value}
             required={required}
             onChange={handleChange}
-            onFocus={(): void => ref.current._focus()} // eslint-disable-line
+            // eslint-disable-next-line
+            onFocus={(): void => ref.current._focus()}
           />
-        )
+        ) : <></>
       }
-    </Element>
+    </HTMLElement>
   )
 }
