@@ -1,28 +1,38 @@
 import * as React from 'react'
 import { palette } from 'common/theme'
-import { pickTextColor } from './helpers'
 import './Button.css'
 
 type Props = {
   children: React.ReactChild | string;
   type?: 'button' | 'submit';
-  color?: 'primary';
-  icon?: boolean;
+  color: 'primary' | 'secondary' | 'none';
   onClick: (...args: any[]) => void; // eslint-disable-line
 }
 
 /* eslint react/button-has-type: 0 */
 export default function Button(props: Props): React.ReactElement {
   const {
-    children, type, icon, color, onClick,
+    children, type, color, onClick,
   } = props
+
+  const backgroundColor = {
+    primary: palette.primary,
+    secondary: palette.white,
+    none: 'none',
+  }
+
+  const textColor = {
+    primary: palette.white,
+    secondary: palette.black,
+    none: 'none',
+  }
 
   return (
     <button
       type={type || 'button'}
-      className={`button ${icon && 'icon-button'}`}
+      className={`button ${color === 'none' ? 'icon-button' : ''}`}
       onClick={onClick}
-      style={{ backgroundColor: palette[color], color: color && pickTextColor(color) }}
+      style={{ backgroundColor: backgroundColor[color], color: textColor[color] }}
     >
       {children}
     </button>

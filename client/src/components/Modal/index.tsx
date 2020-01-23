@@ -27,7 +27,7 @@ export default function Modal(props: Props): React.ReactElement {
           <Button color="primary" onClick={onOK}>
             OK
           </Button>
-          <Button onClick={onClose}>
+          <Button color="secondary" onClick={onClose}>
             Close
           </Button>
         </div>

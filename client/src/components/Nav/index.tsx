@@ -36,7 +36,7 @@ export default function Nav(): React.ReactElement {
               )
               : (
                 <div className="nav-right">
-                  <Button onClick={(): void => setOpen(!open)} icon>
+                  <Button onClick={(): void => setOpen(!open)} color="none">
                     <img src={Menu} alt="menu" />
                   </Button>
                 </div>

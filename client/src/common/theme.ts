@@ -8,6 +8,8 @@ type Palette = {
 
 export const palette: Palette = {
   primary: '#2185d0',
+  white: '#ffffff',
+  black: '#000000',
   error: 'red',
   success: '#16ab39',
 }

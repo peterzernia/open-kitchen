@@ -81,10 +81,10 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
       {
         recipe.author.id === state.user.id && (
           <div className="recipeview-actions">
-            <Button onClick={(): void => history.push(`/recipes/${slug}/edit`)} icon>
+            <Button onClick={(): void => history.push(`/recipes/${slug}/edit`)} color="none">
               <img src={Edit} alt="edit" />
             </Button>
-            <Button onClick={(): void => setOpen(true)} icon>
+            <Button onClick={(): void => setOpen(true)} color="none">
               <img src={Delete} alt="delete" />
             </Button>
           </div>

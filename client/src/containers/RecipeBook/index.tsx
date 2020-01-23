@@ -42,7 +42,7 @@ export default function RecipeBook(props: RouteComponentProps<RouteParams>): Rea
     <div>
       { username === state.user.username ? (
         <div className="recipebook-settings">
-          <Button onClick={(): void => history.push('/profile')} icon>
+          <Button onClick={(): void => history.push('/profile')} color="none">
             <img src={Settings} alt="settings" />
           </Button>
         </div>

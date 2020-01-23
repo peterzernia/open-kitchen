@@ -75,6 +75,7 @@ export default function Form(props: Props): React.ReactElement {
             && (
               <Button
                 onClick={secondaryButton.handleClick}
+                color="secondary"
               >
                 {secondaryButton.label}
               </Button>
