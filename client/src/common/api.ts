@@ -8,6 +8,8 @@ import {
 } from 'types'
 
 const api = ky.create({ prefixUrl: `${process.env.REACT_APP_API_URL}/api/v1/` })
+
+// eslint-disable-next-line
 const withAuth = (token: string): any => api.extend({
   hooks: {
     beforeRequest: [

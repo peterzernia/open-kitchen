@@ -9,7 +9,7 @@ export const initialState: State = {
   user: {} as User,
   authenticated: false,
   notification: {} as Notification,
-} as const
+}
 
 
 export const reducer = (state: State, action: Action): State => {
