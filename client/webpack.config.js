@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = (env) => ({
@@ -28,7 +29,7 @@ module.exports = (env) => ({
         ],
       }, 
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg|ico)$/,
         use: {
           loader: 'url-loader',
         },
@@ -36,6 +37,9 @@ module.exports = (env) => ({
     ],
   },
   plugins: [
+    new CopyPlugin([
+      { from: './public/favicon.ico', to: '.' },
+    ]),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
