@@ -13,6 +13,7 @@ import Twitter from 'assets/icons/twitter.svg'
 import Pintrest from 'assets/icons/pinterest.svg'
 import Facebook from 'assets/icons/facebook.svg'
 import Email from 'assets/icons/email.svg'
+import WhatsApp from 'assets/icons/whatsapp.svg'
 import './RecipeView.css'
 
 type RouteParams = {
@@ -111,6 +112,9 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
         </a>
         <a href={`mailto:?Subject=${recipe.title}&body=Check out this recipe! https://openkitchen.peterzernia.com/recipes/${slug}/view`}>
           <img height={16} src={Email} alt="email" />
+        </a>
+        <a href={`https://web.whatsapp.com/send?&text=Check out this recipe! https://openkitchen.peterzernia.com/recipes/${slug}/view`}>
+          <img height={16} src={WhatsApp} alt="whatsapp" />
         </a>
       </div>
     </div>
