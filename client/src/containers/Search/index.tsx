@@ -55,19 +55,22 @@ export default function Search(props: RouteComponentProps): React.ReactElement {
           value={value}
         />
       </div>
-      { loading && <Loader />}
-      <Grid>
-        {
-          recipes.map((recipe) => (
-            <Card
-              key={recipe.slug}
-              title={recipe.title}
-              body={recipe.description}
-              onClick={(): void => history.push(`/recipes/${recipe.slug}/view`)}
-            />
-          ))
-        }
-      </Grid>
+      { loading ? (
+        <Loader />
+      ) : (
+        <Grid>
+          {
+            recipes.map((recipe) => (
+              <Card
+                key={recipe.slug}
+                title={recipe.title}
+                body={recipe.description}
+                onClick={(): void => history.push(`/recipes/${recipe.slug}/view`)}
+              />
+            ))
+          }
+        </Grid>
+      )}
     </div>
   )
 }
