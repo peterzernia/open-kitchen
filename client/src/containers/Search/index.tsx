@@ -43,17 +43,19 @@ export default function Search(props: RouteComponentProps): React.ReactElement {
   }
 
   return (
-    <div>
-      <div className="search-bar mx">
-        <h1>Search for recipes</h1>
-        <Input
-          label=""
-          name=""
-          type="text"
-          placeholder="Enter a recipe, ingredient or author..."
-          handleChange={handleChange}
-          value={value}
-        />
+    <div className="search">
+      <div className="search-header">
+        <div className="search-header-text">Search for recipes</div>
+        <div className="search-bar mx">
+          <Input
+            label=""
+            name=""
+            type="text"
+            placeholder="Enter a recipe, ingredient or author..."
+            handleChange={handleChange}
+            value={value}
+          />
+        </div>
       </div>
       { loading ? (
         <Loader />

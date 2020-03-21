@@ -1,3 +1,17 @@
+.search {
+  margin: 64px 0px;
+  text-align: center;
+}
+
+.search-header {
+  margin-bottom: 48px;
+}
+
+.search-header-text {
+  font-size: 40px;
+  margin: 24px;
+}
+
 .search-bar {
   width: 300px;
   text-align: center;
