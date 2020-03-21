@@ -28,8 +28,19 @@ export default function RegisterPage(props: RouteComponentProps): React.ReactEle
         history.push('/')
       }
     } catch (err) {
+      let message
+      const res = await err.response.json()
+
+      if (res.message.includes('email')) {
+        message = 'Email already taken'
+      } else if (res.message.includes('username')) {
+        message = 'Username already taken'
+      } else {
+        message = 'Yike! Error'
+      }
+
       dispatch(setNotification({
-        message: 'Yike! Error',
+        message,
         type: 'error',
       }))
     }
