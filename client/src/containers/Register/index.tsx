@@ -15,11 +15,18 @@ export default function RegisterPage(props: RouteComponentProps): React.ReactEle
 
   const handleSubmit = async (payload: Register): Promise<void> => {
     try {
-      const res = await register(payload)
+      if (payload.password1 !== payload.password2) {
+        dispatch(setNotification({
+          message: 'Passwords must match',
+          type: 'error',
+        }))
+      } else {
+        const res = await register(payload)
 
-      dispatch(setUser(res))
+        dispatch(setUser(res))
 
-      history.push('/')
+        history.push('/')
+      }
     } catch (err) {
       dispatch(setNotification({
         message: 'Yike! Error',
@@ -53,12 +60,14 @@ export default function RegisterPage(props: RouteComponentProps): React.ReactEle
         label="Password"
         name="password1"
         type="password"
+        minlength={6}
         required
       />
       <Input
         label="Confirm Password"
         name="password2"
         type="password"
+        minlength={6}
         required
       />
     </Form>

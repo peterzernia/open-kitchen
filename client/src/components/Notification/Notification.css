@@ -6,7 +6,6 @@
   bottom: 24px;
   left: 0;
   height: 64px;
-  line-height: 64px;
   width: 216px;
 
   margin: 0px 16px;
@@ -24,8 +23,14 @@
 }
 
 .notification-message {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
   width: 160px;
   padding: 0px 4px;
+
+  word-wrap: break-word;
 }
 
 .notification-button {

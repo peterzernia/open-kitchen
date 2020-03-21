@@ -28,7 +28,7 @@ export default function LoginPage(props: RouteComponentProps): React.ReactElemen
     } catch (err) {
       dispatch(setNotification({
         type: 'error',
-        message: 'Yike! Error',
+        message: 'Invalid credentials',
       }))
     }
   }

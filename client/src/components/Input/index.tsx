@@ -8,6 +8,7 @@ type Props = {
     className?: string;
     handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     label: string;
+    minlength?: number;
     name: string;
     placeholder?: string;
     required?: boolean;
@@ -19,6 +20,7 @@ export default function Input(props: Props): React.ReactElement {
   const {
     handleChange,
     label,
+    minlength,
     name,
     placeholder,
     required,
@@ -34,6 +36,7 @@ export default function Input(props: Props): React.ReactElement {
           className="input"
           name={name}
           onChange={handleChange}
+          minLength={minlength}
           placeholder={placeholder}
           required={required}
           type={type}
