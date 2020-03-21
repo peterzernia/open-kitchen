@@ -1,4 +1,5 @@
 import * as React from 'react'
+import dompurify from 'dompurify'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { Recipe } from 'types'
 import { getRecipe, deleteRecipe } from 'common/api'
@@ -26,6 +27,7 @@ type dangerousHTML = {
 
 /* eslint react/no-danger: 0 */
 export default function RecipeView(props: RouteComponentProps<RouteParams>): React.ReactElement {
+  const sanitizer = dompurify.sanitize
   const [recipe, setRecipe] = React.useState({} as Recipe)
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
@@ -34,7 +36,7 @@ export default function RecipeView(props: RouteComponentProps<RouteParams>): Rea
   const { history, match } = props
   const { slug } = match.params
 
-  const createHTML = (text: string): dangerousHTML => ({ __html: text })
+  const createHTML = (text: string): dangerousHTML => ({ __html: sanitizer(text) })
 
   React.useEffect(() => {
     async function fetchData(): Promise<void> {
