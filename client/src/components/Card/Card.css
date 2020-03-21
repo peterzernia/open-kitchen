@@ -25,4 +25,7 @@
 .card-body {
   height: 100px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  height: 10.8em;
+  line-height: 1.8em;
 }
