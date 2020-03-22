@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -14,13 +13,13 @@ import (
 var DB *gorm.DB
 
 // InitDB ...
-func InitDB() *gorm.DB {
+func InitDB() (*gorm.DB, error) {
 	db, err := gorm.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 	DB = db
-	return DB
+	return DB, nil
 }
 
 // GetDB ...

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
@@ -14,7 +15,11 @@ import (
 )
 
 func main() {
-	db := utils.InitDB()
+	db, err := utils.InitDB()
+	if err != nil {
+		log.Println(err)
+	}
+
 	db.AutoMigrate(
 		&models.User{}, &models.Recipe{},
 	)

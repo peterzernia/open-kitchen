@@ -5,7 +5,7 @@ matrix:
       services:
         - docker
       install:
-        - touch .env
+        - echo "DATABASE_URL=postgres://postgres:postgres@db/postgres?sslmode=disable" >> .env
         - make build
       script: make test
     - stage: deploy
