@@ -40,7 +40,7 @@ func handleRegistration(c *gin.Context) {
 		Token:    token,
 	}
 
-	if err := db.Create(&user).Error; err != nil {
+	if err := createUser(db, user); err != nil {
 		message := utils.ParseUserDBError(err)
 
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -54,7 +54,6 @@ func handleRegistration(c *gin.Context) {
 
 func handleLogin(c *gin.Context) {
 	auth := models.Auth{}
-	user := models.User{}
 	if err := c.BindJSON(&auth); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": err.Error(),
@@ -64,9 +63,16 @@ func handleLogin(c *gin.Context) {
 
 	db := utils.GetDB()
 
-	db.Where("username = ?", auth.Username).First(&user)
+	user, err := getUser(db, auth.Username)
 
-	err := utils.ComparePasswords(user.Password, auth.Password)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Could not find user",
+		})
+		return
+	}
+
+	err = utils.ComparePasswords(user.Password, auth.Password)
 
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -78,7 +84,10 @@ func handleLogin(c *gin.Context) {
 	if user.Token == "" {
 		token, _ := utils.GenerateRandomString(32)
 		user.Token = token
-		db.Save(&user)
+		if err := updateUser(db, user); err != nil {
+			c.Status(http.StatusInternalServerError)
+			return
+		}
 	}
 
 	c.JSON(http.StatusOK, userWithToken(user))
@@ -136,7 +145,10 @@ func handlePasswordChange(c *gin.Context) {
 
 	password := utils.HashAndSalt([]byte(auth.Password1))
 	user.Password = password
-	db.Save(&user)
+	if err := updateUser(db, user); err != nil {
+		c.Status(http.StatusInternalServerError)
+		return
+	}
 
 	c.Status(http.StatusOK)
 }
@@ -167,7 +179,7 @@ func handleUpdateUser(c *gin.Context) {
 		user.Email = auth.Email
 	}
 
-	if err := db.Save(&user).Error; err != nil {
+	if err := updateUser(db, user); err != nil {
 		message := utils.ParseUserDBError(err)
 
 		c.JSON(http.StatusBadRequest, gin.H{
