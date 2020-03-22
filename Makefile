@@ -1,7 +1,4 @@
 dc := docker-compose
-ifeq ($(CI), true)
-	dc := docker-compose -f docker-compose-ci.yml
-endif
 
 build:
 	$(dc) build
@@ -17,7 +14,7 @@ lint:
 .PHONY: lint
 
 test-go:
-	$(dc) run --rm open-kitchen go test
+	$(dc) run --rm open-kitchen go test -v ./...
 .PHONY: test-go
 
 test-js:
