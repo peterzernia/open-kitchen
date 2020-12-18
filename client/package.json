@@ -15,7 +15,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^4.3.5",
     "core-js": "^3.4.2",
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.0.17",
     "ky": "^0.16.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
